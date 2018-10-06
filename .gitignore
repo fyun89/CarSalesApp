@@ -1,0 +1,6 @@
+##MacOS
+.DS_store
+
+##Development
+node_modules/
+dist/
