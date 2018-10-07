@@ -37,6 +37,7 @@ Possible technology/library to be used:
   - PWA for fast loading
   - LinkedDB for in-browser storage (alternative: cache)
   - Bootstrap for flexible and stable styling
+  - Axios
 
 Scalability Planning
   - Micro-service architecture used to separate different tasks which enables easier scalability when new features are added
