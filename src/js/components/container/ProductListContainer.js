@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 const ProductListContainer = ({ data }) => (
   <div>
     <div>{`${data.model_year} ${data.make} ${data.model}`}</div>
-    <img src={data.chrome_image_url} alt="car" />
+    <div className="imageParent">
+      <img className="img-fluid" src={data.chrome_image_url} alt="car" />
+    </div>
   </div>
 );
 
