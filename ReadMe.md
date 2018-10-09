@@ -38,6 +38,8 @@ Possible technology/library to be used:
   - LinkedDB for in-browser storage (alternative: cache)
   - Bootstrap for flexible and stable styling
   - Axios
+  - ESLint - Airbnb rules
+  - shortId - to generate unique key value for array
 
 Scalability Planning
   - Micro-service architecture used to separate different tasks which enables easier scalability when new features are added
