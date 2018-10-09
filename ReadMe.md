@@ -39,7 +39,7 @@ Possible technology/library to be used:
   - Bootstrap for flexible and stable styling
   - Axios
   - ESLint - Airbnb rules
-  - shortId - to generate unique key value for array
+  - shortId - to generate unique key values for arrays
 
 Scalability Planning
   - Micro-service architecture used to separate different tasks which enables easier scalability when new features are added
