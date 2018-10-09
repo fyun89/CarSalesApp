@@ -21,11 +21,14 @@ class BrowseContainer extends Component {
 
 
   render () {
+    let vehicleListData = this.state.vehicleListData.vehicles
     return(
       <div>
         <div className="navbar">Navigation</div>
         <div className="container">
-          <ProductListContainer test="passed prop" />
+        {vehicleListData ? vehicleListData.map((elem, i) => (
+          <ProductListContainer data={elem}/>
+        )) : <h3>Loading...</h3>}
         </div>
       </div>
     )

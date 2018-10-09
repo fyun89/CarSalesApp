@@ -1,14 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const ProductList = ({test}) => (
+const ProductListContainer = ({ data }) => (
   <div>
-    <div>This should appear as ProductList: {test}</div>
+    <div>{`${data.model_year} ${data.make} ${data.model}`}</div>
+    <img src={data.chrome_image_url} />
   </div>
 );
 
-ProductList.propTypes = {
-  test: PropTypes.string.isRequired
+ProductListContainer.propTypes = {
+  data: PropTypes.object.isRequired,
 };
 
-export default ProductList
+export default ProductListContainer;
