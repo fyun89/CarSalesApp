@@ -32,6 +32,7 @@ Main goals:
 Notes:
   - With the introduction of Babel 7, I decided to set up my own environment for React development instead of using the given React starter kit.
   - For organization of components and separation of concern, I follow a Container / Presentation pattern. Container component contains the logics while presentational components carry what interfaces the user. This method is useful in reusability of the components as well.
+  - By use of modal, user will be shown more detailed view of the selected vehicle. 
 
 Possible technology/library to be used:
   - PWA for fast loading
@@ -49,4 +50,6 @@ Scalability Planning
 Questions:
   - STK number - what is it and is it in the API
   - EXT and INT color - not avail in API
-  - 
+
+Decisions:
+  - Modal vs New page: My initial plan was to use modal as a detailed pop-up page for a consistent look of a SPA look since you still see the background. However, after doing some research, it appears that use of modal is recommended for quick and very necessary actions. It should not have too much information. In addition, it may not work very well in mobile environment. Therefore I chose to display a clean new page for a detail page, while still being an SPA.

@@ -1,26 +1,36 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import DetailPage from '../presentational/DetailPage'
 
 class DetailPageContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       vehicleData: {},
     };
   }
 
   componentDidMount() {
-    axios.get(`https://interviewapi3.apiblueprint.org/vehicles/${this.props.data}`)
+    const { data, vehicleNumber } = this.props
+    axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles/${data.vehicles[vehicleNumber].id}`)
       .then((res) => {
-        this.setState({ vehicleData: res.data.data });
-        console.log('the state: ', this.state.vehicleData);
+        console.log('data at detail: ', res.data.data.vehicle);
+        this.setState({ vehicleData: res.data.data.vehicle });
       });
   }
 
   render() {
-    const { vehicleListData } = this.state;
+    const { vehicleData } = this.state;
+    console.log('detailpagecontainer data: ', vehicleData.chrome_image_url);
     return (
-      <div></div>
+      <div>
+        {
+        vehicleData
+          ? <DetailPage vehicleData={vehicleData} />
+          : <div>Loading Data</div>
+        }
+      </div>
+    );
   }
 }
 

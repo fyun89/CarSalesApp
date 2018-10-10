@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ProductListContainer from './ProductListContainer';
 import Pagination from '../presentational/Pagination';
+import DetailPageContainer from './DetailPageContainer';
+import NavBar from '../presentational/NavBar';
 
 class BrowseContainer extends Component {
   constructor() {
     super();
     this.state = {
       vehicleListData: {},
+      currentPage: 1,
+      selectedVehicleNumber: 0,
     };
+    this.handleVehicleClick = this.handleVehicleClick.bind(this);
+    this.handleBackToMain = this.handleBackToMain.bind(this);
   }
 
   componentDidMount() {
@@ -20,16 +26,42 @@ class BrowseContainer extends Component {
   }
 
   handleVehicleClick(i) {
-    console.log(`clicked vehicle ${i}`)
+    const { vehicleListData, currentPage } = this.state
+    console.log(`clicked vehicle ${i + 1}`)
+    this.setState({
+      vehicleListData,
+      currentPage,
+      selectedVehicleNumber: i + 1,
+    });
+  }
+
+  handleBackToMain() {
+    this.setState({ selectedVehicleNumber: 0 });
   }
 
   render() {
-    const { vehicleListData } = this.state;
+    const { vehicleListData, currentPage, selectedVehicleNumber } = this.state;
     return (
       <div>
-        <div className="navbar">Navigation</div>
-        <ProductListContainer vehicleListData={vehicleListData} handleClick={this.handleVehicleClick} />
-        <Pagination pageData={vehicleListData} />
+        <NavBar backToMainBtnClick={this.handleBackToMain} />
+        { selectedVehicleNumber
+          ? (
+            <DetailPageContainer
+              data={vehicleListData}
+              vehicleNumber={selectedVehicleNumber - 1}
+            />
+          )
+          // conditional rendering details of selected vehicle
+          : (
+            <div>
+              <ProductListContainer
+                vehicleListData={vehicleListData}
+                handleClick={this.handleVehicleClick}
+              />
+              <Pagination pageData={vehicleListData} />
+            </div>
+          ) // conditional rendering when vehicle is unselected (to browse list of vehicles)
+        }
       </div>
     );
     // Fetch the vehicle index
