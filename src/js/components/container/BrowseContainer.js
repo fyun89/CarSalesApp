@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ProductListContainer from './ProductListContainer';
-
-const shortid = require('shortid');
+import Pagination from '../presentational/Pagination';
 
 class BrowseContainer extends Component {
   constructor() {
@@ -20,18 +19,24 @@ class BrowseContainer extends Component {
       });
   }
 
+  handleVehicleClick(i) {
+    console.log(`clicked vehicle ${i}`)
+  }
+
   render() {
     const { vehicleListData } = this.state;
     return (
       <div>
         <div className="navbar">Navigation</div>
-        <div className="container">
-          {vehicleListData.vehicles ? vehicleListData.vehicles.map(elem => (
-            <ProductListContainer key={shortid.generate()} data={elem} />
-          )) : <h3>Loading...</h3>}
-        </div>
+        <ProductListContainer vehicleListData={vehicleListData} handleClick={this.handleVehicleClick} />
+        <Pagination pageData={vehicleListData} />
       </div>
     );
+    // Fetch the vehicle index
+    // Decision: MUST FETCH FOR EACH SPECIFIC VEHICLE
+    // Renders the main page
+    // Conditionally renders the List or Detail page
+    // PageCount determines which data to display (default: first page)
   }
 }
 

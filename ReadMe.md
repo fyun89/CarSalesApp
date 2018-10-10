@@ -40,7 +40,13 @@ Possible technology/library to be used:
   - Axios
   - ESLint - Airbnb rules
   - shortId - to generate unique key values for arrays
+  - localStorage - to store session data (persistent favorite state)
 
 Scalability Planning
   - Micro-service architecture used to separate different tasks which enables easier scalability when new features are added
   - In addition, the architecture offers code-reuse which lowers the development time, easier maintenance and troubleshooting. 
+
+Questions:
+  - STK number - what is it and is it in the API
+  - EXT and INT color - not avail in API
+  - 
