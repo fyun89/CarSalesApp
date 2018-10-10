@@ -5,18 +5,20 @@ const VehicleSpec = ({ data, handleClick, index }) => (
   <div>
     <p className="vehicleName"><strong>{`${data.model_year} ${data.make} ${data.model} ${data.trim}`}</strong></p>
     <p className="detailedSpec">
-      VIN:
+      VIN: &nbsp;
       {data.id}
       <br />
-      STK:
+      STK: &nbsp;
       {data.product_financials[0].id}
       <br />
-      EXT: N/A
+      EXT: &nbsp;
+      N/A
       <br />
-      Miles:
+      Miles: &nbsp;
       {data.mileage}
       <br />
-      INT: N/A
+      INT: &nbsp;
+      N/A
     </p>
     <button type="button" className="btn btn-primary" onClick={() => handleClick(index)}>Check This Vehicle!</button>
   </div>

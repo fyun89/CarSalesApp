@@ -1,16 +1,15 @@
 import React from 'react';
+import VehiclePictures from './VehiclePictures';
+import DetailPageCarousel from './DetailPageCarousel';
 
 const DetailPage = ({ vehicleData }) => {
-  //console.log('data to be shown: ', mainImg)
-  // <div className="detailPage">
-  //   <img src={data.vehicle.chrome_image_url} />
-  // </div>
   return (
-    <div>
+    <div className="container">
       {vehicleData
         ? (
-          <div>
-            <img src={vehicleData.chrome_image_url} />
+          <div className="row">
+            <DetailPageCarousel data={vehicleData.image_location_list} />
+            <VehiclePictures purpose="detailPage" data={vehicleData.chrome_image_url} />
           </div>
         )
         : <div>Loading Details</div>

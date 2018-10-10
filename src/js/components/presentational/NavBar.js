@@ -1,10 +1,19 @@
 import React from 'react';
 
-const NavBar = ({ backToMainBtnClick }) => (
-  <div>
-    <div className="navbar">Navigation</div>
-    <button type="button" className="btn btn-primary" onClick={backToMainBtnClick}>To Main</button>
-  </div>
-);
+const NavBar = ({ backToBrowseBtnClick, selected }) => {
+  if (!selected) {
+    return (
+      <div>
+        <div className="navbar">Navigation</div>
+      </div>
+    );
+  }
+  return (
+    <div>
+      <div className="navbar">Navigation</div>
+      <button type="button" className="btn btn-primary" onClick={backToBrowseBtnClick}>Back to Browse</button>
+    </div>
+  );
+};
 
 export default NavBar;

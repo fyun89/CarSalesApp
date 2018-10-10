@@ -14,7 +14,7 @@ class BrowseContainer extends Component {
       selectedVehicleNumber: 0,
     };
     this.handleVehicleClick = this.handleVehicleClick.bind(this);
-    this.handleBackToMain = this.handleBackToMain.bind(this);
+    this.handleBackToBrowse = this.handleBackToBrowse.bind(this);
   }
 
   componentDidMount() {
@@ -35,15 +35,19 @@ class BrowseContainer extends Component {
     });
   }
 
-  handleBackToMain() {
+  handleBackToBrowse() {
     this.setState({ selectedVehicleNumber: 0 });
   }
 
   render() {
     const { vehicleListData, currentPage, selectedVehicleNumber } = this.state;
+    // if selectedVehicleNumber is > 0, indicates detail page
     return (
       <div>
-        <NavBar backToMainBtnClick={this.handleBackToMain} />
+        <NavBar
+          backToBrowseBtnClick={this.handleBackToBrowse}
+          selected={selectedVehicleNumber}
+        />
         { selectedVehicleNumber
           ? (
             <DetailPageContainer
