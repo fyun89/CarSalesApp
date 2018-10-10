@@ -9,8 +9,8 @@ const NavBar = ({ backToBrowseBtnClick, selected }) => {
     );
   }
   return (
-    <div>
-      <div className="navbar">Navigation</div>
+    <div className="navbar">
+      <div>Navigation</div>
       <button type="button" className="btn btn-primary" onClick={backToBrowseBtnClick}>Back to Browse</button>
     </div>
   );

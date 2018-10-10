@@ -24,11 +24,13 @@ class DetailPageContainer extends Component {
     console.log('detailpagecontainer data: ', vehicleData.chrome_image_url);
     return (
       <div>
-        {
-        vehicleData
-          ? <DetailPage vehicleData={vehicleData} />
-          : <div>Loading Data</div>
-        }
+        <div className="detailPageMain">
+          {
+          vehicleData
+            ? <DetailPage vehicleData={vehicleData} />
+            : <div>Loading Data</div>
+          }
+        </div>
       </div>
     );
   }
