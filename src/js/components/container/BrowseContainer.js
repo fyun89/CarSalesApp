@@ -27,7 +27,6 @@ class BrowseContainer extends Component {
 
   handleVehicleClick(i) {
     const { vehicleListData, currentPage } = this.state
-    console.log(`clicked vehicle ${i + 1}`)
     this.setState({
       vehicleListData,
       currentPage,

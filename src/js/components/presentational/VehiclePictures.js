@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+const shortid = require('shortid');
 
 const VehiclePictures = ({ purpose, data }) => {
   if (purpose === 'browsePage') { // if this component is being used for browse page (listing page)
@@ -22,7 +23,7 @@ const VehiclePictures = ({ purpose, data }) => {
           <li data-target="#vehicleCarousel" data-slide-to="0" className="active" />
           {data.map((elem,i) => {
             if (i > 0) {
-              return <li data-target="#vehicleCarousel" data-slide-to={i} />
+              return <li key={shortid.generate()} data-target="#vehicleCarousel" data-slide-to={i} />
             }
           })}
         </ol>
@@ -33,7 +34,7 @@ const VehiclePictures = ({ purpose, data }) => {
           {data.map((elem, i) => {
             if (i > 0) {
               return (
-                <div className="carousel-item">
+                <div key={shortid.generate()} className="carousel-item">
                   <img className="d-block w-100" src={elem} alt="First slide" />
                 </div>
               );

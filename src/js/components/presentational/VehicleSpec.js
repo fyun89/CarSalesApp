@@ -8,7 +8,9 @@ const centToDollarConv = (amt) => {
   return `${dollarPortion}.${centPortion}`;
 }
 
-const VehicleSpec = ({ data, handleClick, index, purpose }) => {
+const VehicleSpec = ({
+  data, handleClick, index, purpose,
+}) => { // Airbnb ESLint guidance suggests new line for long curley braces content
   if (purpose === "productList") {
     return (
       <div>
@@ -35,17 +37,23 @@ const VehicleSpec = ({ data, handleClick, index, purpose }) => {
   }
   if (purpose === "detail") {
     return (
-      <div className="detailSpecDescription">
-        <div>Model Year, Make</div>
-        <div>Model, Trim</div>
-        <div>Mileage</div>
-        <div>Monthly Pmt</div>
-        <div>Starting Fee</div> 
+      <div className="content-container detailSpecDescription">
+        <div className="row">
+          <div className="col-xs-12 col-sm-6">
+            <div>Model Year, Make</div>
+            <div>Model, Trim</div>
+            <div>Mileage</div>
+          </div>
+          <div className="col-xs-12 col-sm-6">
+            <div>Monthly Pmt</div>
+            <div>Starting Fee</div>
+          </div>
+        </div> 
         <div>Peace of Mind</div>
         <div>
-          Every Fair car comes with a limited warranty, routine maintenance,$nbsp;
-          and roadside assistance included. Add optional Fair insurance,$nbsp;
-          extra miles or excess wear-and-tear protection at checkout and$nbsp;
+          Every Fair car comes with a limited warranty, routine maintenance,
+          and roadside assistance included. Add optional Fair insurance,
+          extra miles or excess wear-and-tear protection at checkout and
           bundle it all into one simple, transparent monthly payment.
         </div>
       </div>

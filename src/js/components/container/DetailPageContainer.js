@@ -21,7 +21,6 @@ class DetailPageContainer extends Component {
 
   render() {
     const { vehicleData } = this.state;
-    console.log('detailpagecontainer data: ', vehicleData.chrome_image_url);
     return (
       <div>
         <div className="detailPageMain">
