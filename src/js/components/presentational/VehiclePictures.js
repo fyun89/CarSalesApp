@@ -1,30 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 const shortid = require('shortid');
 
 const VehiclePictures = ({ purpose, data }) => {
   if (purpose === 'browsePage') { // if this component is being used for browse page (listing page)
     if (!data) {
-      return <div>Loading Image...</div>
+      return <div>Loading Image...</div>;
     }
     return (
       <div className="imageParent col-sm">
-        <img className="img-fluid" src={data.chrome_image_url} alt="Car Listing Image" />
+        <img className="img-fluid" src={data.chrome_image_url} alt="Vehicle" />
       </div>
     );
   }
   if (purpose === 'detailPage') { // if this component is being used for detail page
     if (!data) {
-      return <div>Loading Image...</div>
+      return <div>Loading Image...</div>;
     }
     return (
       <div id="vehicleCarousel" className="carousel slide" data-ride="carousel">
         <ol className="carousel-indicators">
           <li data-target="#vehicleCarousel" data-slide-to="0" className="active" />
-          {data.map((elem,i) => {
+          {data.map((elem, i) => {
             if (i > 0) {
-              return <li key={shortid.generate()} data-target="#vehicleCarousel" data-slide-to={i} />
+              return <li key={shortid.generate()} data-target="#vehicleCarousel" data-slide-to={i} />;
             }
+            return null;
           })}
         </ol>
         <div className="carousel-inner">
@@ -39,6 +41,7 @@ const VehiclePictures = ({ purpose, data }) => {
                 </div>
               );
             }
+            return null;
           })}
         </div>
         <a className="carousel-control-prev" href="#vehicleCarousel" role="button" data-slide="prev">

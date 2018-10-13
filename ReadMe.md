@@ -1,6 +1,7 @@
 Introduction:
   - This app is built to demonstrate my ability in frontend development.
   - User will be presented with a convenient view of the cars that are availabe for sale. 
+  - The app will be responsive -- change depending on the users' devices' different screen sizes
 
 Overview:
   - Car Listing Page
@@ -44,13 +45,22 @@ Possible technology/library to be used:
   - localStorage - to store session data (persistent favorite state)
 
 Scalability Planning
-  - Micro-service architecture used to separate different tasks which enables easier scalability when new features are added
-  - In addition, the architecture offers code-reuse which lowers the development time, easier maintenance and troubleshooting. 
+  - Micro-service architecture used to separate different tasks which enables easier scalability when new features are added.
+  - Micro-service architecture also offers code-reuse which lowers the development time, easier maintenance and troubleshooting. 
+  - Use of an object instead of an array for favorite list (see "Decisions" for more info)
 
-Questions:
-  - STK number - what is it and is it in the API
-  - EXT and INT color - not avail in API
+Limitations:
+  - Missing STK number - used "id" under financial_data in the API
+  - Limited amount of vehicle information in the API so it was not possible to have as many description shown in the example screenshots.
+    - STK, EXT, INT, Vehicle Features, 3Yr Loan Alternative, Etc.
 
 Decisions:
   - Modal vs New page: My initial plan was to use modal as a detailed pop-up page for a consistent look of a SPA look since you still see the background. However, after doing some research, it appears that use of modal is recommended for quick and very necessary actions. It should not have too much information. In addition, it may not work very well in mobile environment. Therefore I chose to display a clean new page for a detail page, while still being an SPA.
   - PWA vs local storage cache: PWA essentially downloads the entire web-app in a device and allows a user to use the web-app even in situations where there is no network. PWA keeps itself up to date when network is available. This enables much faster loading time and enhance the user experience. However, PWA is still in development for many browsers and there may be possible incompatibility issue. Therefore I chose to use local storage cache as the goal of this project is stable, readily-deployable web-app. 
+  - Architecture design for performance: Due to the instruction for this assignment, I am calling a separate API to loading vehicle specific detail once the user clicks "Check this vehicle!", but in practice, I think it would be better to have a single API call at the ProductListing page (which also includes all the detailed information about each cars being displayed) and use the data as the user clicks "Check this vehicle" button. This would significantly increase the performance of this app.
+    - But for now, to make the transition more smooth, I have added a loading screen. 
+  - Use of Array vs Object for managing favorites (Backend performance): According to my research, for small datasets, array will usually have better performance, but with scalability in mind, use of object would be better for this specific use case. To lookup in an array, JavaScript will need to iterate through the list. At scale, this may become a problem. In addition, deletion would be faster in an object because it does not need to be re-organized its structure after deleting an element inside.
+    - While using Object for storage, it is generally known that property "delete" is known to be slow. However, to efficiently maintain memory and improve overall web-app's performance, I decided to use "delete" because favoriting feature is not expected to be used frequently. I believed that cost-benefit of improving the overall performance would be more effective. 
+  - Security Check:
+    1. XSS
+    2. Script injection

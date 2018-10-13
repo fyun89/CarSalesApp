@@ -8,12 +8,15 @@ const NavBar = ({ backToBrowseBtnClick, selected }) => {
       </div>
     );
   }
-  return (
-    <div className="navbar">
-      <div>Navigation</div>
-      <button type="button" className="btn btn-primary" onClick={backToBrowseBtnClick}>Back to Browse</button>
-    </div>
-  );
+  if (selected) {
+    return (
+      <div className="navbar">
+        <div>Navigation</div>
+        <button type="button" className="btn btn-primary" onClick={backToBrowseBtnClick}>Back to Browse</button>
+      </div>
+    );
+  }
+  return null;
 };
 
 export default NavBar;

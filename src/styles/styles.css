@@ -1,46 +1,50 @@
-.navbar {
-  background-color: white;
-  color: #FF5A00;
-  outline: solid 1px black;
-}
-
-.imageParent {
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-}
-
-.img-fluid {
-  max-height: 100%;
-  height: auto;
-}
+/* Tags alphabetically ordered */
 
 body {
   font-size: 16px;
   font-family: 'Roboto', san-serif;
 }
 
-.detailedSpec {
-  font-size: 14px;
+@media all and (max-width: 1200px) { /* screen sizes up to 1200px */
+  body {
+      font-size: 1em;
+  }
+}
+@media all and (max-width: 900px) { /* screen sizes up to 1000px */
+  body {
+      font-size: .9em;
+      }
+  }
+@media all and (max-width: 340px) { /* screen sizes up to 500px */
+  body {
+      font-size: 0.8em;
+      }
+  }
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid black;
 }
 
-.navbar {
-  outline: solid 1px #EBEBEB;
+html {
+  background-color: #F6F6F6;
 }
 
-.navbarContent {
-  outline: 0;
-}
 
-.detailSpecDescription {
-  background-color: white;
+
+/* Other CSS Alphabetically sorted */
+.assuranceTitle {
+  text-align: center;
+  font-size: 1.3em;
 }
 
 .btn-primary {
   color: #fff;
   background-color: #FF5A00;
   border-color: #FF5A00;
+  margin-bottom: 1%;
 }
 .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
   color: #FF5A00!important;
@@ -69,26 +73,66 @@ body {
 .carousel-control-next-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff5A00' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }
-#vehicleCarousel {
-  background-color: #F6F6F6; 
-}
+
 
 .detailPageMain {
   background-color: #F6F6F6;
 }
 
-@media all and (max-width: 1200px) { /* screen sizes up to 1200px */
-  body {
-      font-size: 1em;
-  }
+.detailedSpec {
+  font-size: 14px;
 }
-@media all and (max-width: 900px) { /* screen sizes up to 1000px */
-  body {
-      font-size: .9em;
-      }
-  }
-@media all and (max-width: 340px) { /* screen sizes up to 500px */
-  body {
-      font-size: 0.8em;
-      }
-  }
+
+.detailSpecDescription {
+  background-color: white;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.imageParent {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.img-fluid {
+  max-height: 100%;
+  height: auto;
+}
+
+.mileageInfo {
+  font-size: 1.2em;
+  color: #FF5A00;
+}
+
+.modelTrimInfo {
+  font-size: 3em;
+}
+
+.monthlyInfo {
+  font-size: 3em;
+  color: #FF5A00;
+}
+
+.MYMakeInfo {
+  font-size: 1.2em;
+}
+
+.navbar {
+  background-color: white;
+  color: #FF5A00;
+  outline: solid 1px #EBEBEB;
+}
+
+.navbarContent {
+  outline: 0;
+}
+
+.startFeeInfo {
+  font-size: 2em;
+}
+
+#vehicleCarousel {
+  background-color: #F6F6F6; 
+}

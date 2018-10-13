@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import DetailPage from '../presentational/DetailPage'
+import DetailPage from '../presentational/DetailPage';
 
 class DetailPageContainer extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class DetailPageContainer extends Component {
   }
 
   componentDidMount() {
-    const { data, vehicleNumber } = this.props
+    const { data, vehicleNumber } = this.props;
     axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles/${data.vehicles[vehicleNumber].id}`)
       .then((res) => {
         console.log('data at detail: ', res.data.data.vehicle);
