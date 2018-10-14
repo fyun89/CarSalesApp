@@ -101,6 +101,14 @@ html {
   height: auto;
 }
 
+.markedFavorite {
+  color: #FF5A00!important;
+  background-color: #fff!important;
+  border-color: #FF5A00!important;
+  outline: none;
+  box-shadow: none;
+}
+
 .mileageInfo {
   font-size: 1.2em;
   color: #FF5A00;
@@ -123,10 +131,17 @@ html {
   background-color: white;
   color: #FF5A00;
   outline: solid 1px #EBEBEB;
+  font-size: 1.7em;
+  height: 50px;
 }
 
 .navbarContent {
   outline: 0;
+}
+
+.loadingScreen {
+  height: 300px;
+  width: 300px;
 }
 
 .startFeeInfo {

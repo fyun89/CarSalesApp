@@ -62,7 +62,7 @@ const VehicleSpec = ({
                       ? (
                         <button
                           type="button"
-                          className="btn btn-primary"
+                          className="btn btn-primary markedFavorite"
                           onClick={() => handleCheckFavorite(data.id)}
                         >
                         Marked as Favorite!

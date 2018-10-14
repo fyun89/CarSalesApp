@@ -1,6 +1,7 @@
 import React from 'react';
 import VehiclePictures from './VehiclePictures';
 import VehicleSpec from './VehicleSpec';
+import LoadingScreen from './LoadingScreen';
 
 const DetailPage = ({ vehicleData, handleFavorite, handleCheckFavorite }) => (
   <div>
@@ -20,7 +21,7 @@ const DetailPage = ({ vehicleData, handleFavorite, handleCheckFavorite }) => (
           />
         </div>
       )
-      : <div>Loading Images</div>
+      : null
     }
   </div>
 );

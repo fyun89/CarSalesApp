@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductListing from '../presentational/ProductListing';
+import LoadingScreen from '../presentational/LoadingScreen';
 
 const shortid = require('shortid');
 
@@ -17,7 +18,7 @@ const ProductListContainer = ({ vehicleListData, handleClick, handleFavorite, ha
           index={i}
         />
       ))
-      : <div>LOADING</div>
+      : <LoadingScreen />
     }
   </div>
 );

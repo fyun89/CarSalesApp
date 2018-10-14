@@ -21,10 +21,13 @@ class BrowseContainer extends Component {
   }
 
   componentDidMount() {
-    console.log('this is local storage', localStorage[0])
+    console.log('this is local storage', localStorage)
     axios.get('https://private-4e19e-interviewapi3.apiary-mock.com/vehicles?page={1}')
       .then((res) => {
-        this.setState({ vehicleListData: res.data.data });
+        this.setState({
+          vehicleListData: res.data.data,
+          favorited: localStorage,
+        });
         console.log('the state: ', this.state.vehicleListData);
       });
   }
@@ -98,7 +101,6 @@ class BrowseContainer extends Component {
       </div>
     );
     // Fetch the vehicle index
-    // Decision: MUST FETCH FOR EACH SPECIFIC VEHICLE
     // Renders the main page
     // Conditionally renders the List or Detail page
     // PageCount determines which data to display (default: first page)

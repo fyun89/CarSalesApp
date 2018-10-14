@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import DetailPage from '../presentational/DetailPage';
+import LoadingScreen from '../presentational/LoadingScreen';
 
 class DetailPageContainer extends Component {
   constructor(props) {
@@ -14,9 +15,9 @@ class DetailPageContainer extends Component {
     const { data, vehicleNumber } = this.props;
     axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles/${data.vehicles[vehicleNumber].id}`)
       .then((res) => {
-        console.log('data at detail: ', res.data.data.vehicle);
         this.setState({ vehicleData: res.data.data.vehicle });
-      });
+      })
+      .catch(err => alert("It appears that this doesn't exist. Please try again later!"))
   }
 
   render() {
@@ -27,7 +28,9 @@ class DetailPageContainer extends Component {
       <div>
         <div className="detailPageMain">
           {
-          vehicleData
+          vehicleData.image_location_list
+          // image is the most visually attracted asset of this page
+          // Therefore, loading screen will display until images are loaded
             ? (
               <DetailPage
                 vehicleData={vehicleData}
@@ -35,7 +38,7 @@ class DetailPageContainer extends Component {
                 handleCheckFavorite={handleCheckFavorite}
               />
             )
-            : <div>Loading Data</div>
+            : <LoadingScreen />
           }
         </div>
       </div>
