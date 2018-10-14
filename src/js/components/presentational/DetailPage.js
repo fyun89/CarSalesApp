@@ -2,7 +2,7 @@ import React from 'react';
 import VehiclePictures from './VehiclePictures';
 import VehicleSpec from './VehicleSpec';
 
-const DetailPage = ({ vehicleData }) => (
+const DetailPage = ({ vehicleData, handleFavorite, handleCheckFavorite }) => (
   <div>
     {vehicleData
       ? (
@@ -12,7 +12,12 @@ const DetailPage = ({ vehicleData }) => (
               <VehiclePictures data={vehicleData.image_location_list} purpose="detailPage" />
             </div>
           </div>
-          <VehicleSpec data={vehicleData} purpose="detail" />
+          <VehicleSpec
+            data={vehicleData}
+            purpose="detail"
+            handleFavorite={handleFavorite}
+            handleCheckFavorite={handleCheckFavorite}
+          />
         </div>
       )
       : <div>Loading Images</div>

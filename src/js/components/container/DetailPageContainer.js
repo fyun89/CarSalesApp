@@ -21,12 +21,20 @@ class DetailPageContainer extends Component {
 
   render() {
     const { vehicleData } = this.state;
+    const { handleFavorite } = this.props;
+    const { handleCheckFavorite } = this.props;
     return (
       <div>
         <div className="detailPageMain">
           {
           vehicleData
-            ? <DetailPage vehicleData={vehicleData} />
+            ? (
+              <DetailPage
+                vehicleData={vehicleData}
+                handleFavorite={handleFavorite}
+                handleCheckFavorite={handleCheckFavorite}
+              />
+            )
             : <div>Loading Data</div>
           }
         </div>

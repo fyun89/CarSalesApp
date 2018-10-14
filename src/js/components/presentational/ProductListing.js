@@ -6,11 +6,29 @@ import Favorite from './Favorite';
 
 const purpose = "productList"
 
-const ProductListing = ({ data, handleClick, index }) => (
+const ProductListing = ({
+  data,
+  handleClick,
+  index,
+  handleFavorite,
+  handleCheckFavorite,
+}) => (
   <div className="row">
-    <Favorite className="col-sm" data={data} />
+    <Favorite
+      className="col-sm"
+      vinNum={data.id}
+      index={index}
+      handleFavorite={handleFavorite}
+      handleCheckFavorite={handleCheckFavorite}
+    />
     <VehiclePictures purpose="browsePage" data={data} />
-    <VehicleSpec className="col-sm" data={data} handleClick={handleClick} index={index} purpose={purpose} />
+    <VehicleSpec
+      className="col-sm"
+      data={data}
+      handleClick={handleClick}
+      index={index}
+      purpose={purpose}
+    />
     <br />
   </div>
 );

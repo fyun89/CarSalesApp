@@ -9,7 +9,12 @@ const centToDollarConv = (amt) => {
 };
 
 const VehicleSpec = ({
-  data, handleClick, index, purpose,
+  data,
+  handleClick,
+  handleFavorite,
+  handleCheckFavorite,
+  index,
+  purpose,
 }) => { // Airbnb ESLint guidance suggests new line for long curley braces content
   if (purpose === 'productList') {
     return (
@@ -52,7 +57,27 @@ const VehicleSpec = ({
                 <div className="col col-xs-6">
                   <button type="button" className="btn btn-primary" onClick={() => handleClick(index)}>Choose This Vehicle!</button>
                   &nbsp;
-                  <button type="button" className="btn btn-primary" onClick={() => handleClick(index)}>Add To Favorite</button>
+                  {
+                    handleFavorite(data.id)
+                      ? (
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          onClick={() => handleCheckFavorite(data.id)}
+                        >
+                        Marked as Favorite!
+                        </button>
+                      )
+                      : (
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          onClick={() => handleCheckFavorite(data.id)}
+                        >
+                        Add To Favorite!
+                        </button>
+                      )
+                  }
                 </div>
               </div>
             </div>

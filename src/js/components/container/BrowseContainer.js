@@ -12,12 +12,16 @@ class BrowseContainer extends Component {
       vehicleListData: {},
       currentPage: 1,
       selectedVehicleNumber: 0,
+      favorited: {},
     };
     this.handleVehicleClick = this.handleVehicleClick.bind(this);
     this.handleBackToBrowse = this.handleBackToBrowse.bind(this);
+    this.handleFavorite = this.handleFavorite.bind(this);
+    this.handleCheckFavorite = this.handleCheckFavorite.bind(this);
   }
 
   componentDidMount() {
+    console.log('this is local storage', localStorage[0])
     axios.get('https://private-4e19e-interviewapi3.apiary-mock.com/vehicles?page={1}')
       .then((res) => {
         this.setState({ vehicleListData: res.data.data });
@@ -38,6 +42,28 @@ class BrowseContainer extends Component {
     this.setState({ selectedVehicleNumber: 0 });
   }
 
+  handleFavorite(elem) {
+    const newFavorited = this.state.favorited;
+    console.log('prev state: ', this.state)
+
+    if (newFavorited[elem]) {
+      console.log('favorited already, removing favorite')
+      delete newFavorited[elem];
+      localStorage.removeItem(elem)
+      this.setState({ favorited: newFavorited });
+    } else {
+      console.log('not favorited, adding favorite')
+      newFavorited[elem] = 'checked';
+      localStorage.setItem(elem, newFavorited[elem])
+      this.setState({ favorited: newFavorited });
+    }
+  }
+
+  handleCheckFavorite(elem) {
+    const { favorited } = this.state;
+    return favorited[elem] !== undefined;
+  }
+
   render() {
     const { vehicleListData, currentPage, selectedVehicleNumber } = this.state;
     // if selectedVehicleNumber is > 0, indicates detail page
@@ -52,6 +78,8 @@ class BrowseContainer extends Component {
             <DetailPageContainer
               data={vehicleListData}
               vehicleNumber={selectedVehicleNumber - 1}
+              handleFavorite={this.handleCheckFavorite}
+              handleCheckFavorite={this.handleFavorite}
             />
           )
           // conditional rendering details of selected vehicle
@@ -60,6 +88,8 @@ class BrowseContainer extends Component {
               <ProductListContainer
                 vehicleListData={vehicleListData}
                 handleClick={this.handleVehicleClick}
+                handleFavorite={this.handleFavorite}
+                handleCheckFavorite={this.handleCheckFavorite}
               />
               <Pagination pageData={vehicleListData} />
             </div>

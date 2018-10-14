@@ -1,14 +1,21 @@
 import React from 'react';
 
-const Favorite = ({ checkState }) => (
+const Favorite = ({
+  data,
+  vinNum,
+  handleFavorite,
+  handleCheckFavorite
+}) => (
   <div className="form-check">
-    <input
-      type="checkbox"
-      onChange={()=>console.log(document.getElementsByClassName("form-check-input"))}
-      className="form-check-input"
-      id="controlFavorite"
-    />
-    <label className="form-check-label">Add to Favorite</label>
+    <label className="form-check-label" htmlFor="favoriteCheckBox">
+      <input
+        className="form-check-input"
+        type="checkbox"
+        checked={handleCheckFavorite(vinNum)}
+        onChange={() => handleFavorite(vinNum)}
+      />
+      Add to Favorite
+    </label>
   </div>
 );
 
