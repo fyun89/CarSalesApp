@@ -1,3 +1,6 @@
+Sample Deployed App URL:
+  - https://carsalesapp-3e608.firebaseapp.com/
+
 Introduction:
   - This app is built to demonstrate my ability in frontend development and API handling.
   - User will be presented with a convenient view of the cars that are availabe for sale. 
