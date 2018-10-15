@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const shortid = require('shortid');
 
@@ -41,6 +42,10 @@ const MileageSlider = ({ otherData, current, handleSelectMileageOption }) => {
       }
     </div>
   );
+};
+
+MileageSlider.propTypes = {
+  handleSelectMileageOption: PropTypes.func.isRequired,
 };
 
 export default MileageSlider;

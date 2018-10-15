@@ -13,7 +13,7 @@ const Pagination = ({
       {
         pageData.current_page !== 1
           ? <button className="btn-primary" type="button" onClick={prevPage}>PREV</button>
-          : <button className="btn-primary" type="button" disabled>PREV</button>
+          : <button className="btn-primary disabled" type="button" disabled>PREV</button>
       }
       <form onSubmit={handleSubmit}>
         &nbsp;
@@ -30,7 +30,7 @@ const Pagination = ({
       {
         pageData.current_page < pageData.page_count
           ? <button className="btn-primary" type="button" onClick={nextPage}>Next</button>
-          : <button className="btn-primary" type="button" disabled>Next</button>
+          : <button className="btn-primary disabled" type="button" disabled>Next</button>
       }
     </div>
   </div>
@@ -39,7 +39,11 @@ const Pagination = ({
 // used &nbsp due to Airbnb eslint restriction on "jsx-one-expression-per-line"
 
 Pagination.propTypes = {
-  pageData: PropTypes.object.isRequired,
+  pageData: PropTypes.shape({ current_page: PropTypes.number }).isRequired,
+  nextPage: PropTypes.func.isRequired,
+  prevPage: PropTypes.func.isRequired,
+  handleInput: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default Pagination;

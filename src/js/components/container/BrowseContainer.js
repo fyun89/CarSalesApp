@@ -50,14 +50,14 @@ class BrowseContainer extends Component {
   }
 
   handleFavorite(elem) {
-    const newFavorited = this.state.favorited;
-    if (newFavorited[elem]) {
-      delete newFavorited[elem];
+    const { favorited } = this.state;
+    if (favorited[elem]) {
+      delete favorited[elem];
       localStorage.removeItem(elem);
-      this.setState({ favorited: newFavorited });
+      this.setState({ favorited });
     } else {
-      newFavorited[elem] = 'checked';
-      this.setState({ favorited: newFavorited });
+      favorited[elem] = 'checked';
+      this.setState({ favorited });
     }
   }
 

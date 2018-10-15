@@ -55,10 +55,9 @@ const VehiclePictures = ({ purpose, data }) => {
   return null;
 };
 
-export default VehiclePictures;
+VehiclePictures.propTypes = {
+  purpose: PropTypes.string.isRequired,
+  data: PropTypes.oneOfType([PropTypes.shape({ body_style: PropTypes.string }), PropTypes.array]),
+};
 
-/*
-Code reuse
-  conditional - if called from browse, display single picture
-  if called from ProductDetail, display multiple picture
-*/
+export default VehiclePictures;

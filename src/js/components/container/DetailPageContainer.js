@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import DetailPage from '../presentational/DetailPage';
 import LoadingScreen from '../presentational/LoadingScreen';
@@ -57,11 +58,18 @@ class DetailPageContainer extends Component {
               />
             )
             : <LoadingScreen />
-          }
+            }
         </div>
       </div>
     );
   }
 }
+
+DetailPageContainer.propTypes = {
+  data: PropTypes.shape({ body_style: PropTypes.string }).isRequired,
+  vehicleNumber: PropTypes.number.isRequired,
+  handleFavorite: PropTypes.func.isRequired,
+  handleCheckFavorite: PropTypes.func.isRequired,
+};
 
 export default DetailPageContainer;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const NavBar = ({ backToBrowseBtnClick, selected }) => {
   if (!selected) {
@@ -17,6 +18,11 @@ const NavBar = ({ backToBrowseBtnClick, selected }) => {
     );
   }
   return null;
+};
+
+NavBar.propTypes = {
+  backToBrowseBtnClick: PropTypes.func.isRequired,
+  selected: PropTypes.number.isRequired,
 };
 
 export default NavBar;

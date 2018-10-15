@@ -1,6 +1,6 @@
 import React from 'react';
-import MileageSlider from './MileageSlider';
 import PropTypes from 'prop-types';
+import MileageSlider from './MileageSlider';
 
 const centToDollarConv = (amt) => {
   const amtStr = amt.toString();
@@ -136,5 +136,16 @@ const VehicleSpec = ({
   }
   return null;
 };
+
+VehicleSpec.propTypes = {
+  data: PropTypes.shape({ body_style: PropTypes.string }),
+  otherData: PropTypes.shape({ current_page: PropTypes.number }),
+  handleClick: PropTypes.func,
+  handleFavorite: PropTypes.func,
+  handleCheckFavorite: PropTypes.func,
+  handleSelectMileageOption: PropTypes.func,
+  index: PropTypes.number,
+  purpose: PropTypes.string.isRequired,
+}
 
 export default VehicleSpec;

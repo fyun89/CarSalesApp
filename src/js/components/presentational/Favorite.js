@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Favorite = ({
   vinNum,
@@ -17,5 +18,11 @@ const Favorite = ({
     </label>
   </div>
 );
+
+Favorite.propTypes = {
+  vinNum: PropTypes.string.isRequired,
+  handleFavorite: PropTypes.func.isRequired,
+  handleCheckFavorite: PropTypes.func.isRequired,
+};
 
 export default Favorite;

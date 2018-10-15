@@ -29,14 +29,10 @@ const ProductListContainer = ({
 );
 
 ProductListContainer.propTypes = {
-  vehicleListData: PropTypes.object.isRequired,
+  vehicleListData: PropTypes.shape({ current_page: PropTypes.number }).isRequired,
+  handleClick: PropTypes.func.isRequired,
+  handleFavorite: PropTypes.func.isRequired,
+  handleCheckFavorite: PropTypes.func.isRequired,
 };
 
 export default ProductListContainer;
-
-/*
-todo:
-  - move productlistcontainer --> productlist
-  - productlistcontainer will contain logics to produce listings
-
-*/
