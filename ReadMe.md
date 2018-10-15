@@ -34,6 +34,7 @@ Notes:
   - With the introduction of Babel 7, I decided to set up my own environment for React development instead of using the given React starter kit.
   - For organization of components and separation of concern, I follow a Container / Presentation pattern. Container component contains the logics while presentational components carry what interfaces the user. This method is useful in reusability of the components as well.
   - By use of modal, user will be shown more detailed view of the selected vehicle. 
+  - On mileage range-slider: //TODO
 
 Possible technology/library to be used:
   - PWA for fast loading

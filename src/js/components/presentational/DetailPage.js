@@ -3,7 +3,7 @@ import VehiclePictures from './VehiclePictures';
 import VehicleSpec from './VehicleSpec';
 import LoadingScreen from './LoadingScreen';
 
-const DetailPage = ({ vehicleData, handleFavorite, handleCheckFavorite }) => (
+const DetailPage = ({ vehicleData, otherData, handleFavorite, handleCheckFavorite, handleSelectMileageOption }) => (
   <div>
     {vehicleData
       ? (
@@ -15,9 +15,11 @@ const DetailPage = ({ vehicleData, handleFavorite, handleCheckFavorite }) => (
           </div>
           <VehicleSpec
             data={vehicleData}
+            otherData={otherData}
             purpose="detail"
             handleFavorite={handleFavorite}
             handleCheckFavorite={handleCheckFavorite}
+            handleSelectMileageOption={handleSelectMileageOption}
           />
         </div>
       )

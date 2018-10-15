@@ -6,7 +6,7 @@ const shortid = require('shortid');
 const VehiclePictures = ({ purpose, data }) => {
   if (purpose === 'browsePage') { // if this component is being used for browse page (listing page)
     if (!data) {
-      return <div>Loading Image...</div>;
+      return null;
     }
     return (
       <div className="imageParent col-sm">
@@ -16,7 +16,7 @@ const VehiclePictures = ({ purpose, data }) => {
   }
   if (purpose === 'detailPage') { // if this component is being used for detail page
     if (!data) {
-      return <div>Loading Image...</div>;
+      return null;
     }
     return (
       <div id="vehicleCarousel" className="carousel slide" data-ride="carousel">

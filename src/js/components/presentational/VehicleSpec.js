@@ -1,4 +1,5 @@
 import React from 'react';
+import MileageSlider from './MileageSlider';
 import PropTypes from 'prop-types';
 
 const centToDollarConv = (amt) => {
@@ -10,9 +11,11 @@ const centToDollarConv = (amt) => {
 
 const VehicleSpec = ({
   data,
+  otherData,
   handleClick,
   handleFavorite,
   handleCheckFavorite,
+  handleSelectMileageOption,
   index,
   purpose,
 }) => { // Airbnb ESLint guidance suggests new line for long curley braces content
@@ -48,8 +51,11 @@ const VehicleSpec = ({
             <div className="MYMakeInfo">{`${data.model_year} ${data.make}`}</div>
             <div className="modelTrimInfo"><strong>{`${data.model} ${data.trim}`}</strong></div>
             <div className="mileageInfo">
-              {`${data.mileage} `}
-              Miles
+              <strong>{`${data.mileage} `}Miles</strong>
+              <div className="otherMileageOptions">
+                Other Mileage Options:
+                <MileageSlider current={data} otherData={otherData} handleSelectMileageOption={handleSelectMileageOption}/>
+              </div>
             </div>
             <hr />
             <div className="content-container justify-content-center">
@@ -109,6 +115,7 @@ const VehicleSpec = ({
             </div>
           </div>
         </div>
+        
         <div className="assuranceNotice mt-4 col-md-12">
           <p className="assuranceTitle">Peace of Mind</p>
           <p>

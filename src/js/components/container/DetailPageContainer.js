@@ -9,6 +9,7 @@ class DetailPageContainer extends Component {
     this.state = {
       vehicleData: {},
     };
+    this.handleSelectMileageOption = this.handleSelectMileageOption.bind(this);
   }
 
   componentDidMount() {
@@ -20,8 +21,17 @@ class DetailPageContainer extends Component {
       .catch(err => alert("It appears that this doesn't exist. Please try again later!"))
   }
 
+  handleSelectMileageOption(elem) {
+    axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles/${elem}`)
+      .then((res) => {
+        this.setState({ vehicleData: res.data.data.vehicle })
+      })
+      .catch(err => alert("It appears that this doesn't exist. Please try again later!"))
+  }
+
   render() {
     const { vehicleData } = this.state;
+    const { data } = this.props;
     const { handleFavorite } = this.props;
     const { handleCheckFavorite } = this.props;
     return (
@@ -34,6 +44,8 @@ class DetailPageContainer extends Component {
             ? (
               <DetailPage
                 vehicleData={vehicleData}
+                otherData={data}
+                handleSelectMileageOption={this.handleSelectMileageOption}
                 handleFavorite={handleFavorite}
                 handleCheckFavorite={handleCheckFavorite}
               />
