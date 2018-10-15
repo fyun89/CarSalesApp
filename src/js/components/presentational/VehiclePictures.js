@@ -15,9 +15,6 @@ const VehiclePictures = ({ purpose, data }) => {
     );
   }
   if (purpose === 'detailPage') { // if this component is being used for detail page
-    if (!data) {
-      return null;
-    }
     return (
       <div id="vehicleCarousel" className="carousel slide" data-ride="carousel">
         <ol className="carousel-indicators">
@@ -37,7 +34,7 @@ const VehiclePictures = ({ purpose, data }) => {
             if (i > 0) {
               return (
                 <div key={shortid.generate()} className="carousel-item">
-                  <img className="d-block w-100" src={elem} alt="First slide" />
+                  <img className="d-block w-100" src={elem} alt="vehicle" />
                 </div>
               );
             }
@@ -55,11 +52,7 @@ const VehiclePictures = ({ purpose, data }) => {
       </div>
     );
   }
-  return (
-    <div>
-      Loading images
-    </div>
-  );
+  return null;
 };
 
 export default VehiclePictures;

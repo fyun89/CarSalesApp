@@ -53,7 +53,7 @@ html {
   border-color: #FF5A00;
   margin-bottom: 1%;
 }
-.btn-primary:hover, .open>.dropdown-toggle.btn-primary {
+.btn-primary:hover, .open>.dropdown-toggle.btn-primary, .btn-primary[disabled] {
   color: #FF5A00!important;
   background-color: #fff!important; /*Although it's not a best practice to use !important, for this assignment purposes, chose to override this in order to display clean visuals*/
   border-color: #FF5A00!important;
@@ -172,6 +172,10 @@ html {
 .loadingScreen {
   height: 300px;
   width: 300px;
+}
+
+.pageInput {
+  width: 40px;
 }
 
 .startFeeInfo {

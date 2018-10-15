@@ -51,10 +51,17 @@ const VehicleSpec = ({
             <div className="MYMakeInfo">{`${data.model_year} ${data.make}`}</div>
             <div className="modelTrimInfo"><strong>{`${data.model} ${data.trim}`}</strong></div>
             <div className="mileageInfo">
-              <strong>{`${data.mileage} `}Miles</strong>
+              <strong>
+                {`${data.mileage} `}
+                Miles
+              </strong>
               <div className="otherMileageOptions">
                 Other Mileage Options:
-                <MileageSlider current={data} otherData={otherData} handleSelectMileageOption={handleSelectMileageOption}/>
+                <MileageSlider
+                  current={data}
+                  otherData={otherData}
+                  handleSelectMileageOption={handleSelectMileageOption}
+                />
               </div>
             </div>
             <hr />
@@ -100,10 +107,10 @@ const VehicleSpec = ({
                 }
               </strong>
             </div>
-            {/*  for a strange reason, financial info from
-             the API required conditional to render because
+            {/*  financial info from the API
+             required conditional to render because
              financial information portion was being loaded slower
-             compared to other data within the JSON data  */}
+             compared to other data through the API */}
             <div>Starting Pymt.</div>
             <div className="startFeeInfo">
             $
@@ -115,11 +122,10 @@ const VehicleSpec = ({
             </div>
           </div>
         </div>
-        
         <div className="assuranceNotice mt-4 col-md-12">
           <p className="assuranceTitle">Peace of Mind</p>
           <p>
-            Every Fair car comes with a limited warranty, routine maintenance,
+            Every car comes with a limited warranty, routine maintenance,
             and roadside assistance included. Add optional Fair insurance,
             extra miles or excess wear-and-tear protection at checkout and
             bundle it all into one simple, transparent monthly payment.

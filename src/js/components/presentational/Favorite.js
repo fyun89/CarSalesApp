@@ -1,10 +1,9 @@
 import React from 'react';
 
 const Favorite = ({
-  data,
   vinNum,
   handleFavorite,
-  handleCheckFavorite
+  handleCheckFavorite,
 }) => (
   <div className="form-check">
     <label className="form-check-label" htmlFor="favoriteCheckBox">

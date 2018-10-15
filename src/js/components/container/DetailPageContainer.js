@@ -18,15 +18,21 @@ class DetailPageContainer extends Component {
       .then((res) => {
         this.setState({ vehicleData: res.data.data.vehicle });
       })
-      .catch(err => alert("It appears that this doesn't exist. Please try again later!"))
+      .catch((err) => {
+        alert("It appears that this doesn't exist. Please try again later!");
+        console.log('error at loading componentDidMount in DetailPageContainer: ', err);
+      });
   }
 
   handleSelectMileageOption(elem) {
     axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles/${elem}`)
       .then((res) => {
-        this.setState({ vehicleData: res.data.data.vehicle })
+        this.setState({ vehicleData: res.data.data.vehicle });
       })
-      .catch(err => alert("It appears that this doesn't exist. Please try again later!"))
+      .catch((err) => {
+        alert("It appears that this doesn't exist. Please try again later!");
+        console.log('error at loading handleSelectMileageOption: ', err);
+      });
   }
 
   render() {

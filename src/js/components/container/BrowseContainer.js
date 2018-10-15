@@ -13,22 +13,26 @@ class BrowseContainer extends Component {
       currentPage: 1,
       selectedVehicleNumber: 0,
       favorited: {},
+      typePage: null,
     };
     this.handleVehicleClick = this.handleVehicleClick.bind(this);
     this.handleBackToBrowse = this.handleBackToBrowse.bind(this);
     this.handleFavorite = this.handleFavorite.bind(this);
     this.handleCheckFavorite = this.handleCheckFavorite.bind(this);
+    this.handleNextPage = this.handleNextPage.bind(this);
+    this.handlePrevPage = this.handlePrevPage.bind(this);
+    this.handleInputPage = this.handleInputPage.bind(this);
+    this.handleInputPageType = this.handleInputPageType.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    console.log('this is local storage', localStorage)
     axios.get('https://private-4e19e-interviewapi3.apiary-mock.com/vehicles?page={1}')
       .then((res) => {
         this.setState({
           vehicleListData: res.data.data,
           favorited: localStorage,
         });
-        console.log('the state: ', this.state.vehicleListData);
       });
   }
 
@@ -47,17 +51,12 @@ class BrowseContainer extends Component {
 
   handleFavorite(elem) {
     const newFavorited = this.state.favorited;
-    console.log('prev state: ', this.state)
-
     if (newFavorited[elem]) {
-      console.log('favorited already, removing favorite')
       delete newFavorited[elem];
-      localStorage.removeItem(elem)
+      localStorage.removeItem(elem);
       this.setState({ favorited: newFavorited });
     } else {
-      console.log('not favorited, adding favorite')
       newFavorited[elem] = 'checked';
-      localStorage.setItem(elem, newFavorited[elem])
       this.setState({ favorited: newFavorited });
     }
   }
@@ -67,8 +66,54 @@ class BrowseContainer extends Component {
     return favorited[elem] !== undefined;
   }
 
+  handleNextPage() {
+    const { currentPage } = this.state;
+    const { vehicleListData } = this.state;
+    const nextPage = currentPage + 1;
+    if (nextPage <= vehicleListData.page_count) {
+      this.setState({ currentPage: nextPage });
+    }
+  }
+
+  handlePrevPage() {
+    const { currentPage } = this.state;
+    const prevPage = currentPage - 1;
+    if (prevPage > 0) {
+      this.setState({ currentPage: prevPage });
+    }
+  }
+
+  handleInputPage(elem) {
+    if (elem) {
+      this.setState({ currentPage: elem });
+    }
+  }
+
+  handleInputPageType(e) {
+    this.setState({ typePage: e.target.value });
+  }
+
+  handleSubmit() {
+    const { typePage } = this.state;
+    const { vehicleListData } = this.state;
+    if (typePage <= vehicleListData.page_count && typePage > 0) {
+      this.setState({ currentPage: typePage });
+    } else if (typePage > vehicleListData.page_count) {
+      alert('Page number must be less than the total page');
+      this.setState({ currentPage: vehicleListData.page_count });
+      // automatically redirect to highest page
+    } else if (typePage < 0) {
+      alert('Page number must be greater than 0');
+      // automatically redirect to lowest page
+      this.setState({ currentPage: 1 });
+    } else {
+      alert('Please enter a valid page number');
+      this.setState({ currentPage: 1 });
+    }
+  }
+
   render() {
-    const { vehicleListData, currentPage, selectedVehicleNumber } = this.state;
+    const { vehicleListData, selectedVehicleNumber } = this.state;
     // if selectedVehicleNumber is > 0, indicates detail page
     return (
       <div>
@@ -94,7 +139,14 @@ class BrowseContainer extends Component {
                 handleFavorite={this.handleFavorite}
                 handleCheckFavorite={this.handleCheckFavorite}
               />
-              <Pagination pageData={vehicleListData} />
+              <Pagination
+                pageData={vehicleListData}
+                nextPage={this.handleNextPage}
+                prevPage={this.handlePrevPage}
+                inputPage={this.handleInputPage}
+                handleInput={this.handleInputPageType}
+                handleSubmit={this.handleSubmit}
+              />
             </div>
           ) // conditional rendering when vehicle is unselected (to browse list of vehicles)
         }

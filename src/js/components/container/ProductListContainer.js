@@ -5,7 +5,12 @@ import LoadingScreen from '../presentational/LoadingScreen';
 
 const shortid = require('shortid');
 
-const ProductListContainer = ({ vehicleListData, handleClick, handleFavorite, handleCheckFavorite }) => (
+const ProductListContainer = ({
+  vehicleListData,
+  handleClick,
+  handleFavorite,
+  handleCheckFavorite,
+}) => (
   <div className="container">
     {vehicleListData.vehicles
       ? vehicleListData.vehicles.map((elem, i) => (
