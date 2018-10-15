@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const NavBar = ({ backToBrowseBtnClick, selected }) => {
-  if (!selected) {
+  if (!selected) { // while on "browse" page
     return (
       <div className="navbar">
-        <div><strong>fair</strong></div>
+        <div className="navbarLogo">fair</div>
       </div>
     );
   }
-  if (selected) {
+  if (selected) { // while on specific vehicle page
     return (
       <div className="navbar">
-        <div><strong>fair</strong></div>
+        <div className="navbarLogo">fair</div>
         <button type="button" className="btn btn-primary" onClick={backToBrowseBtnClick}>Back to Browse</button>
       </div>
     );

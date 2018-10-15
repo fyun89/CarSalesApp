@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MileageSlider from './MileageSlider';
 
-const centToDollarConv = (amt) => {
+const centToDollarConv = (amt) => { // reused for VehicleSpec and MileageSlider
   const amtStr = amt.toString();
-  const centPortion = amtStr[amtStr.length - 2] + amtStr[amtStr.length - 1];
-  const dollarPortion = amtStr.substr(0, amtStr.length - 2);
-  return `${dollarPortion}.${centPortion}`;
+  if (amtStr.length > 2) {
+    const centPortion = amtStr[amtStr.length - 2] + amtStr[amtStr.length - 1];
+    const dollarPortion = amtStr.substr(0, amtStr.length - 2);
+    return `${dollarPortion}.${centPortion}`;
+  }
+  return amtStr;
 };
 
 const VehicleSpec = ({
@@ -22,7 +25,7 @@ const VehicleSpec = ({
   if (purpose === 'productList') {
     return (
       <div>
-        <p className="vehicleName"><strong>{`${data.model_year} ${data.make} ${data.model} ${data.trim}`}</strong></p>
+        <p className="vehicleName">{`${data.model_year} ${data.make} ${data.model} ${data.trim}`}</p>
         <p className="detailedSpec">
           VIN: &nbsp;
           {data.id}
@@ -61,6 +64,7 @@ const VehicleSpec = ({
                   current={data}
                   otherData={otherData}
                   handleSelectMileageOption={handleSelectMileageOption}
+                  convertCentToDollar={centToDollarConv}
                 />
               </div>
             </div>
@@ -68,7 +72,13 @@ const VehicleSpec = ({
             <div className="content-container justify-content-center">
               <div className="row">
                 <div className="col col-xs-6">
-                  <button type="button" className="btn btn-primary" onClick={() => handleClick(index)}>Choose This Vehicle!</button>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => console.log('(demo) Chosen vehicle is: ', data.id)}
+                  >
+                  Choose This Vehicle!
+                  </button>
                   &nbsp;
                   {
                     handleFavorite(data.id)
@@ -124,7 +134,7 @@ const VehicleSpec = ({
         </div>
         <div className="assuranceNotice mt-4 col-md-12">
           <p className="assuranceTitle">Peace of Mind</p>
-          <p>
+          <p className="asssuranceDesc">
             Every car comes with a limited warranty, routine maintenance,
             and roadside assistance included. Add optional Fair insurance,
             extra miles or excess wear-and-tear protection at checkout and
@@ -146,6 +156,6 @@ VehicleSpec.propTypes = {
   handleSelectMileageOption: PropTypes.func,
   index: PropTypes.number,
   purpose: PropTypes.string.isRequired,
-}
+};
 
 export default VehicleSpec;

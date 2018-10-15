@@ -4,7 +4,7 @@ import VehicleSpec from './VehicleSpec';
 import VehiclePictures from './VehiclePictures';
 import Favorite from './Favorite';
 
-const purpose = "productList"
+const purpose = 'productList';
 
 const ProductListing = ({
   data,
@@ -34,7 +34,11 @@ const ProductListing = ({
 );
 
 ProductListing.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({ current_page: PropTypes.number }).isRequired,
+  handleClick: PropTypes.func,
+  index: PropTypes.number,
+  handleFavorite: PropTypes.func,
+  handleCheckFavorite: PropTypes.func,
 };
 
 export default ProductListing;

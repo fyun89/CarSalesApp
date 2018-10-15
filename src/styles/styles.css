@@ -47,11 +47,17 @@ html {
   font-size: 1.3em;
 }
 
+.assuranceNotice {
+  margin-bottom: 1em;
+  padding-bottom: 5em;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #FF5A00;
   border-color: #FF5A00;
   margin-bottom: 1%;
+  font-weight: bold;
 }
 .btn-primary:hover, .open>.dropdown-toggle.btn-primary, .btn-primary[disabled] {
   color: #FF5A00!important;
@@ -59,6 +65,7 @@ html {
   border-color: #FF5A00!important;
   outline: none;
   box-shadow: none;
+  font-weight: bold;
 }
 
 .btn-primary:focus, .btn-primary:success, .btn-primary:active, .btn-primary.active {
@@ -67,6 +74,7 @@ html {
   border-color: #FF5A00;
   outline: none;
   box-shadow: none;
+  font-weight: bold;
 }
 
 .btn-mileage {
@@ -74,6 +82,8 @@ html {
   background-color: #fff;
   border-color: #fff;
   margin-bottom: 1%;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 .btn-mileage:hover, .open>.dropdown-toggle.btn-mileage {
   color: #fff!important;
@@ -81,6 +91,8 @@ html {
   border-color: #fff!important;
   outline: none !important;
   box-shadow: none;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .btn:focus, .btn:active, .btn-mileage:focus, .btn-mileage:success, .btn-mileage:active, .btn-mileage.active {
@@ -89,8 +101,9 @@ html {
   border-color: #fff;
   outline: none !important;
   box-shadow: none !important;
+  font-weight: bold;
+  font-size: 1.2em;
 }
-
 
 .carousel {
   margin: 0 auto;
@@ -103,7 +116,6 @@ html {
 .carousel-control-next-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff5A00' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }
-
 
 .detailPageMain {
   background-color: #F6F6F6;
@@ -129,6 +141,11 @@ html {
 .img-fluid {
   max-height: 100%;
   height: auto;
+}
+
+.loadingScreen {
+  height: 300px;
+  width: 300px;
 }
 
 .markedFavorite {
@@ -169,24 +186,31 @@ html {
   outline: 0;
 }
 
-.loadingScreen {
-  height: 300px;
-  width: 300px;
+.navbarLogo {
+  font-weight: 900;
+}
+
+.otherMileage {
+  flex: 0 0 auto;
+  font-size: 0.9em;
+  border: none;
+  font-size: 1.2em;
+}
+
+.otherMileageOptions {
+  margin-top: 1em;
+  font-size: 0.7em;
+}
+
+.paginationRow {
+  margin-bottom: 1em;
+  padding-bottom: 5em;
 }
 
 .pageInput {
   width: 40px;
 }
 
-.startFeeInfo {
-  font-size: 2em;
-}
-
-#vehicleCarousel {
-  background-color: #F6F6F6; 
-}
-
-/* CSS for input range */
 .scrolling-wrapper {
   display: flex;
   flex-wrap: nowrap;
@@ -194,17 +218,20 @@ html {
   width: 100%;
   -webkit-overflow-scrolling: touch;
 }
+
 ::-webkit-scrollbar {
   background: transparent;
 }
 
-.otherMileage {
-  flex: 0 0 auto;
-  font-size: 0.9em;
-  border: none;
+.startFeeInfo {
+  font-size: 2em;
 }
 
-.otherMileageOptions {
-  margin-top: 1em;
-  font-size: 0.9em;
+.vehicleName {
+  font-size: 1.2em;
+  font-weight: 900;
+}
+
+#vehicleCarousel {
+  background-color: #F6F6F6; 
 }

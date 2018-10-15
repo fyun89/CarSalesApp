@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ProductListing from '../presentational/ProductListing';
 import LoadingScreen from '../presentational/LoadingScreen';
 
-const shortid = require('shortid');
+const shortid = require('shortid'); // to create unique key for mapped elements
 
 const ProductListContainer = ({
   vehicleListData,

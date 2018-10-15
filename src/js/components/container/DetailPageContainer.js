@@ -46,8 +46,8 @@ class DetailPageContainer extends Component {
         <div className="detailPageMain">
           {
           vehicleData.image_location_list
-          // image is the most visually attracted asset of this page
-          // Therefore, loading screen will display until images are loaded
+          // image is the most visually attractive asset of this page
+          // therefore, loading screen will display until images are loaded for elegant ui
             ? (
               <DetailPage
                 vehicleData={vehicleData}

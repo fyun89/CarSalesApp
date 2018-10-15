@@ -1,19 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const shortid = require('shortid');
+const shortid = require('shortid'); // to assign unique keys to mapped elements
 
-// slider will have containers that scrolls side ways
-// Will have "Min Mileage" & "Max Mileage"
-// containers will be buttons
-const centToDollarConv = (amt) => {
-  const amtStr = amt.toString();
-  const centPortion = amtStr[amtStr.length - 2] + amtStr[amtStr.length - 1];
-  const dollarPortion = amtStr.substr(0, amtStr.length - 2);
-  return `${dollarPortion}.${centPortion}`;
-};
-
-const MileageSlider = ({ otherData, current, handleSelectMileageOption }) => {
+const MileageSlider = ({
+  otherData,
+  current,
+  handleSelectMileageOption,
+  convertCentToDollar,
+}) => {
   const { vehicles } = otherData;
   return (
     <div className="scrolling-wrapper">
@@ -33,7 +28,7 @@ const MileageSlider = ({ otherData, current, handleSelectMileageOption }) => {
                 &nbsp;Mi
                 <br />
                 $
-                {centToDollarConv(elem.product_financials[0].monthly_payment_cents)}
+                {convertCentToDollar(elem.product_financials[0].monthly_payment_cents)}
               </button>
             );
           }
@@ -46,6 +41,7 @@ const MileageSlider = ({ otherData, current, handleSelectMileageOption }) => {
 
 MileageSlider.propTypes = {
   handleSelectMileageOption: PropTypes.func.isRequired,
+  convertCentToDollar: PropTypes.func.isRequired,
 };
 
 export default MileageSlider;

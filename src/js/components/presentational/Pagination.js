@@ -8,8 +8,8 @@ const Pagination = ({
   handleInput,
   handleSubmit,
 }) => (
-  <div className="container">
-    <div className="row justify-content-center">
+  <div className="container paginationContainer">
+    <div className="row justify-content-center paginationRow">
       {
         pageData.current_page !== 1
           ? <button className="btn-primary" type="button" onClick={prevPage}>PREV</button>

@@ -13,7 +13,7 @@ class BrowseContainer extends Component {
       currentPage: 1,
       selectedVehicleNumber: 0,
       favorited: {},
-      typePage: null,
+      typePage: 1,
     };
     this.handleVehicleClick = this.handleVehicleClick.bind(this);
     this.handleBackToBrowse = this.handleBackToBrowse.bind(this);
@@ -106,7 +106,7 @@ class BrowseContainer extends Component {
       alert('Page number must be greater than 0');
       // automatically redirect to lowest page
       this.setState({ currentPage: 1 });
-    } else {
+    } else if (typeof typePage !== 'number') {
       alert('Please enter a valid page number');
       this.setState({ currentPage: 1 });
     }
@@ -154,6 +154,7 @@ class BrowseContainer extends Component {
     );
     // Fetch the vehicle index
     // Renders the main page
+    // Consistently renders the navigation bar at the top
     // Conditionally renders the List or Detail page
     // PageCount determines which data to display (default: first page)
   }
