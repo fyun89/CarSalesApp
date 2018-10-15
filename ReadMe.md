@@ -1,10 +1,19 @@
-Sample Deployed App URL:
-  - https://carsalesapp-3e608.firebaseapp.com/
+Project name: CarSalesApp
 
-Introduction:
+Description:
   - This app is built to demonstrate my ability in frontend development and API handling.
   - User will be presented with a convenient view of the cars that are availabe for sale. 
   - The app will be responsive -- changes depending on the different viewing devices.
+
+Sample Deployed App URL:
+  - https://carsalesapp-3e608.firebaseapp.com/
+
+Installation:
+  1. Perform "npm install" in Terminal at the root of the project folder.
+  2. Use "npm start" command at the root of the project folder to start webpack-dev-server.
+  3. localhost:3000 will open in your default browser and load the app.
+    - if there is a problem opening localhost:3000, please check if the port is being used.
+    - alternatively, you can edit "scripts": {"start": ...} in package.json file to serve the app through a different port.
 
 Overview:
   - Vehicle Listing Page (Browse page)
@@ -17,7 +26,7 @@ Overview:
     - showcase the vehicle using provided design as guidance
     - implement a car image gallery
     - implement a mileage slider to allow viewing of different prices (see )
-    - Set/unset favorite
+    - set/unset favorite
   - Vehicle Favoriting
     - favorite and unfavorite cars (in both Car Listing page and Details page)
     - data persistence
@@ -32,15 +41,15 @@ Main goals:
     - Simple and easy-to-use experience while maintaining performance and scalability
   - Security
   - Demonstrate tests and use of Proptypes
-  - Demonstrate appropriate use of libraries, data storage / handling, architecture etc.
+  - Demonstrate appropriate use of libraries, data storage / handling, architecture etc
 
 Notes:
   - With the introduction of Babel 7, I decided to set up my own environment for React development instead of using the given React starter kit.
   - For organization of components and separation of concern, I follow a Container / Presentation pattern. Container component contains the logics while presentational components carry what interfaces the user. This method is useful in reusability of the components as well.
   - By use of modal, user will be shown more detailed view of the selected vehicle. 
-  - On mileage range-slider: //TODO
+  - I decided to take a different approach on implementation of range-slider. Please see Limitations section of this readme for more info (last bullet).
 
-Possible technology/library to be used:
+Technologies/Library used:
   - PWA for fast loading
   - LinkedDB for in-browser storage (alternative: cache)
   - Bootstrap for flexible and stable styling
@@ -48,6 +57,7 @@ Possible technology/library to be used:
   - ESLint - Airbnb rules
   - shortId - to generate unique key values for arrays
   - localStorage - to store session data (persistent favorite state)
+  - Jest/Enzyme to test React components
 
 Scalability Planning
   - Micro-service architecture used to separate different tasks which enables easier scalability when new features are added.
@@ -79,6 +89,6 @@ Decisions:
   - Use of Array vs Object for managing favorites (backend performance): According to my research, for small datasets, array will usually have better performance, but with scalability in mind, use of object would be better for this specific use case. To lookup in an array, JavaScript will need to iterate through the list. At scale, this may become a problem. In addition, deletion would be faster in an object because it does not need to be re-organized its structure after deleting an element inside.
     - While using Object for storage, it is generally known that property "delete" is known to be slow. However, to efficiently maintain memory and improve overall web-app's performance, I decided to use "delete" because favoriting feature is not expected to be used frequently. I believed that cost-benefit of improving the overall performance would be more effective.
   - Use of localStorage: There is a known iOS issue where if localStorage is full, there will be an error. Also, the current implementation is acceptable for the simple task of persisting list of favorited vehicles. However, if localStorage is needed for more complex or diversified uses, it should be implemented differently. E.g. grouping the data into objects by using JSON.Stringify. For the simple implementation, I decided to use simple approach.
-  - Security Check:
-    1. XSS
-    2. Script injection
+
+Security: 
+  - React escapes most string variables automatically to prevent XSS injection. XSS injection is one of the most common vulnerability and it should be covered. With the current implementation, I have not found other potential vulnerabilities at the moment.
