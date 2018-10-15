@@ -8,6 +8,9 @@ Description:
 Sample Deployed App URL:
   - https://carsalesapp-3e608.firebaseapp.com/
 
+Prerequisite:
+  - You will need NPM to get started
+
 Installation:
   1. Perform "npm install" in Terminal at the root of the project folder.
   2. Use "npm start" command at the root of the project folder to start webpack-dev-server.
