@@ -9,7 +9,7 @@ const VehiclePictures = ({ purpose, data }) => {
       return null;
     }
     return (
-      <div className="imageParent col-sm">
+      <div className="imageParent col-12 col-md-7 col-xl-7">
         <img className="img-fluid" src={data.chrome_image_url} alt="Vehicle" />
       </div>
     );

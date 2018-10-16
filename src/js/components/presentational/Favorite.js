@@ -6,7 +6,7 @@ const Favorite = ({
   handleFavorite,
   handleCheckFavorite,
 }) => (
-  <div className="form-check">
+  <div className="form-check col-12 col-md-2 col-xl-2">
     <label className="form-check-label" htmlFor="favoriteCheckBox">
       <input
         className="form-check-input"

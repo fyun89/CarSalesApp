@@ -24,7 +24,7 @@ const VehicleSpec = ({
 }) => { // Airbnb ESLint guidance suggests new line for long curley braces content
   if (purpose === 'productList') {
     return (
-      <div>
+      <div className="col-12 col-md-3 col-xl-3">
         <p className="vehicleName">{`${data.model_year} ${data.make} ${data.model} ${data.trim}`}</p>
         <p className="detailedSpec">
           VIN: &nbsp;

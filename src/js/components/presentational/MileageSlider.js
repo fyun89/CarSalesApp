@@ -17,6 +17,22 @@ const MileageSlider = ({
           if (elem.model === current.model
             && elem.trim === current.trim
             && elem.model === current.model) {
+            if (elem.id === current.id) {
+              return (
+                <button
+                  key={shortid.generate()}
+                  className="btn-currMileage otherMileage currentMileageBtn"
+                  type="submit"
+                  onClick={() => handleSelectMileageOption(elem.id)}
+                >
+                  {elem.mileage}
+                  &nbsp;Mi
+                  <br />
+                  $
+                  {convertCentToDollar(elem.product_financials[0].monthly_payment_cents)}
+                </button>
+              );
+            }
             return (
               <button
                 key={shortid.generate()}
@@ -35,6 +51,51 @@ const MileageSlider = ({
           return null;
         })
       }
+      <button
+        className="btn-mileage otherMileage"
+        type="submit"
+        onClick={() => alert('this is a sample button')}
+      >
+        Sample
+        <br />
+        Placeholder
+      </button>
+      <button
+        className="btn-mileage otherMileage"
+        type="submit"
+        onClick={() => alert('this is a sample button')}
+      >
+        Sample
+        <br />
+        Placeholder
+      </button>
+      <button
+        className="btn-mileage otherMileage"
+        type="submit"
+        onClick={() => alert('this is a sample button')}
+      >
+        Sample
+        <br />
+        Placeholder
+      </button>
+      <button
+        className="btn-mileage otherMileage"
+        type="submit"
+        onClick={() => alert('this is a sample button')}
+      >
+        Sample
+        <br />
+        Placeholder
+      </button>
+      <button
+        className="btn-mileage otherMileage"
+        type="submit"
+        onClick={() => alert('this is a sample button')}
+      >
+        Sample
+        <br />
+        Placeholder
+      </button>
     </div>
   );
 };

@@ -95,10 +95,47 @@ html {
   font-size: 1.2em;
 }
 
-.btn:focus, .btn:active, .btn-mileage:focus, .btn-mileage:success, .btn-mileage:active, .btn-mileage.active {
+.btn-mileage:focus, .btn-mileage:success, .btn-mileage:active, .btn-mileage.active {
   color: #FF5A00;
   background-color: #fff;
   border-color: #fff;
+  outline: none !important;
+  box-shadow: none !important;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.btn-primary:focus, .btn-primary:success, .btn-primary:active, .btn-primary.active {
+  color: #fff;
+  background-color: #FF5A00;
+  border-color: #FF5A00;
+  outline: none;
+  box-shadow: none;
+  font-weight: bold;
+}
+
+.btn-currMileage {
+  color: #fff;
+  background-color: #FF5A00;
+  border-color: #FF5A00;
+  margin-bottom: 1%;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.btn-currMileage:hover, .open>.dropdown-toggle.btn-currMileage {
+  color: #FF5A00!important;
+  background-color: #fff!important; /*Although it's not a best practice to use !important, for this assignment purposes, chose to override this in order to display clean visuals*/
+  border-color: #FF5A00!important;
+  outline: none !important;
+  box-shadow: none;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.btn-currMileage:focus, .btn-currMileage:success, .btn-currMileage:active, .btn-currMileage.active {
+  color: #fff;
+  background-color: #FF5A00;
+  border-color: #FF5A00;
   outline: none !important;
   box-shadow: none !important;
   font-weight: bold;
@@ -132,7 +169,6 @@ html {
 }
 
 .imageParent {
-  display: inline-block;
   height: 100%;
   width: 100%;
   text-align: center;
@@ -203,6 +239,8 @@ html {
 }
 
 .paginationRow {
+  margin-top: 1em;
+  padding-top: 5em;
   margin-bottom: 1em;
   padding-bottom: 5em;
 }
