@@ -22,8 +22,9 @@ Prerequisite:
 
 Installation:
   1. Perform "npm install" in Terminal at the root of the project folder.
-  2. Use "npm start" command at the root of the project folder to start webpack-dev-server.
-  3. localhost:3000 will open in your default browser and load the app.
+  2. Use "npm run build" command at the root of the project folder to build bundle.js.
+  3. Use "npm start" command at the root of the project folder to start webpack-dev-server.
+  4. localhost:3000 will open in your default browser and load the app.
     - if there is a problem opening localhost:3000, please check if the port is being used.
     - alternatively, you can edit "scripts": {"start": ...} in package.json file to serve the app through a different port.
 
