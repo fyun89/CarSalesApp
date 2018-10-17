@@ -15,18 +15,21 @@ const VehiclePictures = ({ purpose, data }) => {
     );
   }
   if (purpose === 'detailPage') { // if this component is being used for detail page
+    if (!data) {
+      return null;
+    }
     return (
-      <div id="vehicleCarousel" className="carousel slide" data-ride="carousel">
+      <div id="vehicleCarousel" className="carousel slide col" data-ride="carousel">
         <ol className="carousel-indicators">
           <li data-target="#vehicleCarousel" data-slide-to="0" className="active" />
-          {data.map((elem, i) => {
+          {data.map((i) => {
             if (i > 0) {
               return <li key={shortid.generate()} data-target="#vehicleCarousel" data-slide-to={i} />;
             }
             return null;
           })}
         </ol>
-        <div className="carousel-inner">
+        <div className="carousel-inner" data-interval="false">
           <div className="carousel-item active">
             <img className="d-block w-100" src={data[0]} alt="First slide" />
           </div>
@@ -34,7 +37,12 @@ const VehiclePictures = ({ purpose, data }) => {
             if (i > 0) {
               return (
                 <div key={shortid.generate()} className="carousel-item">
-                  <img className="d-block w-100" src={elem} alt="vehicle" />
+                  <img
+                    className="d-block w-100"
+                    src={elem}
+                    alt="vehicle"
+                    onError={(event) => event.target.setAttribute('src', 'https://www.ispab.org/wp-content/themes/consultix/images/no-image-found-360x260.png')}
+                  />
                 </div>
               );
             }
@@ -52,7 +60,6 @@ const VehiclePictures = ({ purpose, data }) => {
       </div>
     );
   }
-  return null;
 };
 
 VehiclePictures.propTypes = {

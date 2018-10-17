@@ -16,7 +16,10 @@ const DetailPage = ({
         <div>
           <div className="container">
             <div className="row">
-              <VehiclePictures data={vehicleData.image_location_list} purpose="detailPage" />
+              <VehiclePictures
+                data={vehicleData.image_location_list}
+                purpose="detailPage"
+              />
             </div>
           </div>
           <VehicleSpec

@@ -40,7 +40,6 @@ html {
 }
 
 
-
 /* Other CSS Alphabetically sorted */
 .assuranceTitle {
   text-align: center;
@@ -144,6 +143,7 @@ html {
 
 .carousel {
   margin: 0 auto;
+  min-height: 250px;
 }
 
 .carousel-control-prev-icon {

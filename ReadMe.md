@@ -1,5 +1,14 @@
 Project name: CarSalesApp
 
+<Update>
+  - Partial Fix: "Other Mileage Option"
+    - fixed issue where componentDidMount would cause problems when loading the selection. This degraded performance of the app.
+    - the problem of losing images entirely when selecting other option while not on the first image of the carousel.
+    - hypothesis: After testing how React renders, the problem appears to be with Bootstrap's carousel module. All functions are functioning correctly but when there is an invalid url source for images, the Bootstrap carousel seems to have trouble proceeding with rendering.
+  - Added placeholder images for invalid image source links
+  - Enhancd user experience by adding indication to selected (current0) mileage option
+  - Fixed a small problem where the images would not line up if the proportions are different on the main product listing page.
+
 Description:
   - This app is built to demonstrate my ability in frontend development and API handling.
   - User will be presented with a convenient view of the cars that are availabe for sale. 

@@ -9,26 +9,34 @@ class DetailPageContainer extends Component {
     super(props);
     this.state = {
       vehicleData: {},
+      otherMileageSelected: false,
     };
     this.handleSelectMileageOption = this.handleSelectMileageOption.bind(this);
   }
 
   componentDidMount() {
+    console.log('componentDidMount happened');
     const { data, vehicleNumber } = this.props;
-    axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles/${data.vehicles[vehicleNumber].id}`)
-      .then((res) => {
-        this.setState({ vehicleData: res.data.data.vehicle });
-      })
-      .catch((err) => {
-        alert("It appears that this doesn't exist. Please try again later!");
-        console.log('error at loading componentDidMount in DetailPageContainer: ', err);
-      });
+    const { otherMileageSelected } = this.state;
+    if (!otherMileageSelected) {
+      axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles/${data.vehicles[vehicleNumber].id}`)
+        .then((res) => {
+          this.setState({ vehicleData: res.data.data.vehicle });
+        })
+        .catch((err) => {
+          alert("It appears that this doesn't exist. Please try again later!");
+          console.log('error at loading componentDidMount in DetailPageContainer: ', err);
+        });
+    }
   }
 
   handleSelectMileageOption(elem) {
     axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles/${elem}`)
       .then((res) => {
-        this.setState({ vehicleData: res.data.data.vehicle });
+        this.setState({
+          vehicleData: res.data.data.vehicle,
+          otherMileageSelected: true,
+        });
       })
       .catch((err) => {
         alert("It appears that this doesn't exist. Please try again later!");
