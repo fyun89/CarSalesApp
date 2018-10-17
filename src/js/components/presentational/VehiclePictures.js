@@ -36,7 +36,7 @@ const VehiclePictures = ({ purpose, data }) => {
           {data.map((elem, i) => {
             if (i > 0) {
               return (
-                <div key={shortid.generate()} className="carousel-item">
+                <div key={i} className="carousel-item">
                   <img
                     className="d-block w-100"
                     src={elem}
