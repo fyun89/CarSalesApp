@@ -22,7 +22,7 @@ const VehiclePictures = ({ purpose, data }) => {
       <div id="vehicleCarousel" className="carousel slide col" data-ride="carousel">
         <ol className="carousel-indicators">
           <li data-target="#vehicleCarousel" data-slide-to="0" className="active" />
-          {data.map((i) => {
+          {data.map((elem, i) => {
             if (i > 0) {
               return <li key={shortid.generate()} data-target="#vehicleCarousel" data-slide-to={i} />;
             }
