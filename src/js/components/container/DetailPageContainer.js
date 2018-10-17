@@ -15,7 +15,6 @@ class DetailPageContainer extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount happened');
     const { data, vehicleNumber } = this.props;
     const { otherMileageSelected } = this.state;
     if (!otherMileageSelected) {
