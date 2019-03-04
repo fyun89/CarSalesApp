@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SimilarCarsBtn from './SimilarCarsBtn';
 
+const shortid = require('shortid');
+
 const MileageSlider = ({
   otherData,
   current,
@@ -19,6 +21,7 @@ const MileageSlider = ({
             if (elem.id === current.id) {
               return (
                 <SimilarCarsBtn
+                  key={shortid.generate()}
                   className="btn-currMileage otherMileage currentMileageBtn"
                   onClick={() => handleSelectMileageOption(elem.id)}
                   elem={elem}
@@ -28,6 +31,7 @@ const MileageSlider = ({
             }
             return (
               <SimilarCarsBtn
+                key={shortid.generate()}
                 className="btn-mileage otherMileage"
                 onClick={() => handleSelectMileageOption(elem.id)}
                 elem={elem}
@@ -40,6 +44,7 @@ const MileageSlider = ({
       }
       {[1, 2, 3, 4, 5, 6].map(() => ( // To demonstrate extra similar cars
         <SimilarCarsBtn
+          key={shortid.generate()}
           className="btn-mileage otherMileage"
           onClick={() => alert('this is a sample button')}
           elem={{ mileage: 'SAMPLE' }}

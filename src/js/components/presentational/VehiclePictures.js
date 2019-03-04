@@ -36,7 +36,7 @@ const VehiclePictures = ({ purpose, data }) => {
           {data.map((elem, i) => {
             if (i > 0) {
               return (
-                <div key={i} className="carousel-item">
+                <div key={shortid.generate()} className="carousel-item">
                   <img
                     className="d-block w-100"
                     src={elem}
@@ -60,11 +60,16 @@ const VehiclePictures = ({ purpose, data }) => {
       </div>
     );
   }
+  return null;
 };
 
 VehiclePictures.propTypes = {
   purpose: PropTypes.string.isRequired,
   data: PropTypes.oneOfType([PropTypes.shape({ body_style: PropTypes.string }), PropTypes.array]),
+};
+
+VehiclePictures.defaultProps = {
+  data: null,
 };
 
 export default VehiclePictures;

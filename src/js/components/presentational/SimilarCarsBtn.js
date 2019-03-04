@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const shortid = require('shortid'); // to assign unique keys to elements
-
 const SimilarCarsBtn = ({
   className,
   onClick,
@@ -10,7 +8,6 @@ const SimilarCarsBtn = ({
   converted,
 }) => (
   <button
-    key={shortid.generate()}
     className={className}
     type="submit"
     onClick={onClick}
@@ -27,8 +24,8 @@ const SimilarCarsBtn = ({
 SimilarCarsBtn.propTypes = {
   className: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  elem: PropTypes.number,
-  converted: PropTypes.func,
+  elem: PropTypes.objectOf(PropTypes.any),
+  converted: PropTypes.string,
 };
 
 SimilarCarsBtn.defaultProps = {

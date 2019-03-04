@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MileageSlider from './MileageSlider';
-import SimilarCarsBtn from './SimilarCarsBtn';
 
 const centToDollarConv = (amt) => { // reused for VehicleSpec and MileageSlider
   const amtStr = amt.toString();
@@ -157,6 +156,16 @@ VehicleSpec.propTypes = {
   handleSelectMileageOption: PropTypes.func,
   index: PropTypes.number,
   purpose: PropTypes.string.isRequired,
+};
+
+VehicleSpec.defaultProps = {
+  data: null,
+  otherData: null,
+  handleClick: null,
+  handleFavorite: null,
+  handleCheckFavorite: null,
+  handleSelectMileageOption: null,
+  index: null,
 };
 
 export default VehicleSpec;
