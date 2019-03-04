@@ -41,7 +41,7 @@ const VehiclePictures = ({ purpose, data }) => {
                     className="d-block w-100"
                     src={elem}
                     alt="vehicle"
-                    onError={(event) => event.target.setAttribute('src', 'https://www.ispab.org/wp-content/themes/consultix/images/no-image-found-360x260.png')}
+                    onError={event => event.target.setAttribute('src', 'https://www.ispab.org/wp-content/themes/consultix/images/no-image-found-360x260.png')}
                   />
                 </div>
               );

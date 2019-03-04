@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const shortid = require('shortid'); // to assign unique keys to mapped elements
+import SimilarCarsBtn from './SimilarCarsBtn';
 
 const MileageSlider = ({
   otherData,
@@ -19,90 +18,61 @@ const MileageSlider = ({
             && elem.model === current.model) {
             if (elem.id === current.id) {
               return (
-                <button
-                  key={shortid.generate()}
+                <SimilarCarsBtn
                   className="btn-currMileage otherMileage currentMileageBtn"
-                  type="submit"
                   onClick={() => handleSelectMileageOption(elem.id)}
-                >
-                  {elem.mileage}
-                  &nbsp;Mi
-                  <br />
-                  $
-                  {convertCentToDollar(elem.product_financials[0].monthly_payment_cents)}
-                </button>
+                  elem={elem}
+                  converted={convertCentToDollar(elem.product_financials[0].monthly_payment_cents)}
+                />
               );
             }
             return (
-              <button
-                key={shortid.generate()}
+              <SimilarCarsBtn
                 className="btn-mileage otherMileage"
-                type="submit"
                 onClick={() => handleSelectMileageOption(elem.id)}
-              >
-                {elem.mileage}
-                &nbsp;Mi
-                <br />
-                $
-                {convertCentToDollar(elem.product_financials[0].monthly_payment_cents)}
-              </button>
+                elem={elem}
+                converted={convertCentToDollar(elem.product_financials[0].monthly_payment_cents)}
+              />
             );
           }
           return null;
         })
       }
-      <button
-        className="btn-mileage otherMileage"
-        type="submit"
-        onClick={() => alert('this is a sample button')}
-      >
-        Sample
-        <br />
-        Placeholder
-      </button>
-      <button
-        className="btn-mileage otherMileage"
-        type="submit"
-        onClick={() => alert('this is a sample button')}
-      >
-        Sample
-        <br />
-        Placeholder
-      </button>
-      <button
-        className="btn-mileage otherMileage"
-        type="submit"
-        onClick={() => alert('this is a sample button')}
-      >
-        Sample
-        <br />
-        Placeholder
-      </button>
-      <button
-        className="btn-mileage otherMileage"
-        type="submit"
-        onClick={() => alert('this is a sample button')}
-      >
-        Sample
-        <br />
-        Placeholder
-      </button>
-      <button
-        className="btn-mileage otherMileage"
-        type="submit"
-        onClick={() => alert('this is a sample button')}
-      >
-        Sample
-        <br />
-        Placeholder
-      </button>
+      {[1, 2, 3, 4, 5, 6].map(() => ( // To demonstrate extra similar cars
+        <SimilarCarsBtn
+          className="btn-mileage otherMileage"
+          onClick={() => alert('this is a sample button')}
+          elem={{ mileage: 'SAMPLE' }}
+          converted="0"
+        />
+      ))}
     </div>
   );
 };
 
 MileageSlider.propTypes = {
+  otherData: PropTypes.objectOf(PropTypes.any),
+  current: PropTypes.shape({
+    body_style: PropTypes.string,
+    categories: PropTypes.array,
+    chrome_image_url: PropTypes.string,
+    exterior_color_info: PropTypes.objectOf(PropTypes.any),
+    id: PropTypes.string,
+    image_location_list: PropTypes.array,
+    make: PropTypes.string,
+    mileage: PropTypes.number,
+    model: PropTypes.string,
+    model_year: PropTypes.string,
+    new_used_flag: PropTypes.string,
+    product_financials: PropTypes.array,
+    trim: PropTypes.string,
+  }),
   handleSelectMileageOption: PropTypes.func.isRequired,
   convertCentToDollar: PropTypes.func.isRequired,
+};
+MileageSlider.defaultProps = {
+  otherData: null,
+  current: null,
 };
 
 export default MileageSlider;

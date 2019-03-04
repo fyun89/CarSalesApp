@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MileageSlider from './MileageSlider';
+import SimilarCarsBtn from './SimilarCarsBtn';
 
 const centToDollarConv = (amt) => { // reused for VehicleSpec and MileageSlider
   const amtStr = amt.toString();
