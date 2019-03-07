@@ -6,7 +6,7 @@ const Pagination = ({
   handleInput,
   handleSubmit,
   changePage,
-  currentPage
+  currentPage,
 }) => (
   <div className="container paginationContainer">
     <div className="row justify-content-center paginationRow">

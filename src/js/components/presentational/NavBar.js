@@ -12,7 +12,7 @@ const NavBar = ({ backToBrowseBtnClick, selected }) => {
   if (selected) { // while on specific vehicle page
     return (
       <div className="navbar">
-        <div className="navbarLogo">fair</div>
+        <div className="navbarLogo">Cars</div>
         <button type="button" className="btn btn-primary" onClick={backToBrowseBtnClick}>Back to Browse</button>
       </div>
     );
