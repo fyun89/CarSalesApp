@@ -3,23 +3,23 @@ import PropTypes from 'prop-types';
 
 const Pagination = ({
   pageData,
-  nextPage,
-  prevPage,
   handleInput,
   handleSubmit,
+  changePage,
+  currentPage
 }) => (
   <div className="container paginationContainer">
     <div className="row justify-content-center paginationRow">
       {
-        pageData.current_page !== 1
-          ? <button className="btn-primary" type="button" onClick={prevPage}>PREV</button>
+        currentPage > 1
+          ? <button className="btn-primary" type="button" onClick={() => changePage(currentPage - 1)}>PREV</button>
           : <button className="btn-primary disabled" type="button" disabled>PREV</button>
       }
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} key={currentPage}>
         &nbsp;
         <label htmlFor="inputLabel">
           Page &nbsp;
-          <input className="pageInput" type="text" defaultValue={pageData.current_page} onChange={handleInput} />
+          <input className="pageInput" type="text" defaultValue={currentPage} onChange={handleInput} />
           &nbsp; of &nbsp;
           {pageData.page_count}
           &nbsp;
@@ -28,8 +28,8 @@ const Pagination = ({
         &nbsp;
       </form>
       {
-        pageData.current_page < pageData.page_count
-          ? <button className="btn-primary" type="button" onClick={nextPage}>Next</button>
+        currentPage < pageData.page_count
+          ? <button className="btn-primary" type="button" onClick={() => changePage(currentPage + 1)}>Next</button>
           : <button className="btn-primary disabled" type="button" disabled>Next</button>
       }
     </div>
@@ -40,8 +40,8 @@ const Pagination = ({
 
 Pagination.propTypes = {
   pageData: PropTypes.shape({ current_page: PropTypes.number }).isRequired,
-  nextPage: PropTypes.func.isRequired,
-  prevPage: PropTypes.func.isRequired,
+  changePage: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
   handleInput: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };
