@@ -1,6 +1,20 @@
 Project name: CarSalesApp
+Update 2 (3/6/2019)
+  - Refactored MileageSlider component to use SimilarCarsBtn component to reduce redundant code (code-reuse).
+  - Added SimilarCarsBtn component.
+  - Improved the behavior for scenarios where incorrect character or number is inserted to pagination component.
+    - page will not refresh to first page for the incorrect input.
+    - page will not go to first page for the incorrect input.
+  - Reduced the code for pagination's behavior for incorrect input.
+  - Fixed a bug where page input default value won't update on pressing "Next" or "Prev" buttons.
+  - Fixed a bug where "Prev" or "Next" button won't correctly disable itself at the beginning of the page or end of the page.
+  - Added a behavior where the page will scroll to the top of the page after page change.
+  - Fixed a bug where entering new page didn't reload data from the appropriate API uri.
+  - Refactored page change buttons ("Next" and "Prev") to use single handler function (code-reuse) and changed PropTypes in Pagination component accordingly.
+  - Removed unused handler function from BrowseContainer.
+  - TODO: more elegant alert (modal), more code reuse, organize readme update
 
-Update
+Update (Nov 2018)
   - Fixed issue where componentDidMount would cause problems when loading the selection. This degraded performance of the app.
   - Fixed the problem of losing images entirely when selecting other option while not on the first image of the carousel.
   - Partially fixed the problem where image carousel disappears when any images other than the first image is selected and "other mileage option" is clicked. However, if the currently selected image index is higher than the index of the "other mileage option" vehicle's last image, the problem persists. The partial fix was done by using the index value of the image API as the key attribute for element creation in the VehiclePicture component.
@@ -17,7 +31,7 @@ Sample Deployed App URL:
   - https://carsalesapp-3e608.firebaseapp.com/
 
 Prerequisite:
-  - You will need NPM to get started
+  - You will need NPM to get started.
 
 Installation:
   1. Perform "npm install" in Terminal at the root of the project folder.

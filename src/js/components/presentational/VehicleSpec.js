@@ -158,4 +158,14 @@ VehicleSpec.propTypes = {
   purpose: PropTypes.string.isRequired,
 };
 
+VehicleSpec.defaultProps = {
+  data: null,
+  otherData: null,
+  handleClick: null,
+  handleFavorite: null,
+  handleCheckFavorite: null,
+  handleSelectMileageOption: null,
+  index: null,
+};
+
 export default VehicleSpec;

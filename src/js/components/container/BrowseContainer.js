@@ -19,15 +19,14 @@ class BrowseContainer extends Component {
     this.handleBackToBrowse = this.handleBackToBrowse.bind(this);
     this.handleFavorite = this.handleFavorite.bind(this);
     this.handleCheckFavorite = this.handleCheckFavorite.bind(this);
-    this.handleNextPage = this.handleNextPage.bind(this);
-    this.handlePrevPage = this.handlePrevPage.bind(this);
-    this.handleInputPage = this.handleInputPage.bind(this);
     this.handleInputPageType = this.handleInputPageType.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePageButton = this.handlePageButton.bind(this);
   }
 
   componentDidMount() {
-    axios.get('https://private-4e19e-interviewapi3.apiary-mock.com/vehicles?page={1}')
+    const { currentPage } = this.state;
+    axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles?page={${currentPage}}`)
       .then((res) => {
         this.setState({
           vehicleListData: res.data.data,
@@ -66,26 +65,22 @@ class BrowseContainer extends Component {
     return favorited[elem] !== undefined;
   }
 
-  handleNextPage() {
-    const { currentPage } = this.state;
+  handlePageButton(page) { // new
+    window.scrollTo(0, 0);
     const { vehicleListData } = this.state;
-    const nextPage = currentPage + 1;
-    if (nextPage <= vehicleListData.page_count) {
-      this.setState({ currentPage: nextPage });
-    }
-  }
-
-  handlePrevPage() {
-    const { currentPage } = this.state;
-    const prevPage = currentPage - 1;
-    if (prevPage > 0) {
-      this.setState({ currentPage: prevPage });
-    }
-  }
-
-  handleInputPage(elem) {
-    if (elem) {
-      this.setState({ currentPage: elem });
+    if (page > 0 && page <= vehicleListData.page_count) {
+      // this.setState({ currentPage: page });
+      axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles?page={${page}}`)
+        .then((res) => {
+          this.setState({
+            currentPage: page,
+            vehicleListData: res.data.data,
+          });
+        });
+    } else if (page < 0) {
+      alert('You are at the beginning of the page');
+    } else if (page > vehicleListData.page_count) {
+      alert('You are at the last page');
     }
   }
 
@@ -93,22 +88,21 @@ class BrowseContainer extends Component {
     this.setState({ typePage: e.target.value });
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
+    window.scrollTo(0, 0);
     const { typePage } = this.state;
     const { vehicleListData } = this.state;
     if (typePage <= vehicleListData.page_count && typePage > 0) {
       this.setState({ currentPage: typePage });
     } else if (typePage > vehicleListData.page_count) {
       alert('Page number must be less than the total page');
-      this.setState({ currentPage: vehicleListData.page_count });
       // automatically redirect to highest page
-    } else if (typePage < 0) {
-      alert('Page number must be greater than 0');
+      this.setState({ currentPage: vehicleListData.page_count });
+    } else if (typePage < 0 || typeof typePage !== 'number') {
       // automatically redirect to lowest page
-      this.setState({ currentPage: 1 });
-    } else if (typeof typePage !== 'number') {
-      alert('Please enter a valid page number');
-      this.setState({ currentPage: 1 });
+      e.preventDefault();
+      alert('Page number must be a number greater than 0');
     }
   }
 
@@ -122,7 +116,7 @@ class BrowseContainer extends Component {
           selected={selectedVehicleNumber}
         />
         { selectedVehicleNumber
-          ? (
+          ? (// conditional rendering details of selected vehicle
             <DetailPageContainer
               data={vehicleListData}
               vehicleNumber={selectedVehicleNumber - 1}
@@ -130,8 +124,7 @@ class BrowseContainer extends Component {
               handleCheckFavorite={this.handleFavorite}
             />
           )
-          // conditional rendering details of selected vehicle
-          : (
+          : (// conditional rendering when vehicle is unselected (to browse list of vehicles)
             <div>
               <ProductListContainer
                 vehicleListData={vehicleListData}
@@ -141,14 +134,16 @@ class BrowseContainer extends Component {
               />
               <Pagination
                 pageData={vehicleListData}
+                currentPage={this.state.currentPage}
                 nextPage={this.handleNextPage}
                 prevPage={this.handlePrevPage}
                 inputPage={this.handleInputPage}
                 handleInput={this.handleInputPageType}
                 handleSubmit={this.handleSubmit}
+                changePage={this.handlePageButton}
               />
             </div>
-          ) // conditional rendering when vehicle is unselected (to browse list of vehicles)
+          )
         }
       </div>
     );
