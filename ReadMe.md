@@ -9,7 +9,7 @@ Update 2 (3/6/2019)
   - Fixed a bug where page input default value won't update on pressing "Next" or "Prev" buttons.
   - Fixed a bug where "Prev" or "Next" button won't correctly disable itself at the beginning of the page or end of the page.
   - Added a behavior where the page will scroll to the top of the page after page change.
-  - Fixed a bug where entering new page didn't reload data from the appropriate API uri.
+  - Fixed a bug where entering new page didn't reload data from the appropriate API URI.
   - Refactored page change buttons ("Next" and "Prev") to use single handler function (code-reuse) and changed PropTypes in Pagination component accordingly.
   - Removed unused handler function from BrowseContainer.
   - Refactored VehicleDetailImageCarousel, DetailPage, DetailPageContainer and ProductListing to make components more readable and improve separation of concern.
