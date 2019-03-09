@@ -5,58 +5,71 @@ import SimilarCarsBtn from './SimilarCarsBtn';
 const shortid = require('shortid');
 
 const MileageSlider = ({
-  otherData,
+  vehicles,
   current,
   handleSelectMileageOption,
-  convertCentToDollar,
 }) => {
-  const { vehicles } = otherData;
+  const centToDollarConv = (amt) => {
+    const num = amt;
+    const dollars = num / 100;
+    return dollars.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  };
+
   return (
-    <div className="scrolling-wrapper">
-      {
-        vehicles.map((elem) => {
-          if (elem.model === current.model
-            && elem.trim === current.trim
-            && elem.model === current.model) {
-            if (elem.id === current.id) {
-              return (
-                <SimilarCarsBtn
-                  key={shortid.generate()}
-                  className="btn-currMileage otherMileage currentMileageBtn"
-                  onClick={() => handleSelectMileageOption(elem.id)}
-                  elem={elem}
-                  converted={convertCentToDollar(elem.product_financials[0].monthly_payment_cents)}
-                />
-              );
-            }
-            return (
-              <SimilarCarsBtn
-                key={shortid.generate()}
-                className="btn-mileage otherMileage"
-                onClick={() => handleSelectMileageOption(elem.id)}
-                elem={elem}
-                converted={convertCentToDollar(elem.product_financials[0].monthly_payment_cents)}
-              />
-            );
+    <div className="mileageInfo">
+      <strong>
+        {`${current.mileage} `}
+          Miles
+      </strong>
+      <div className="otherMileageOptions">
+        Other Mileage Options:
+        <div className="scrolling-wrapper">
+          {
+            vehicles.map((elem) => {
+              if (elem.model === current.model
+                && elem.trim === current.trim
+                && elem.model === current.model) {
+                if (elem.id === current.id) {
+                  return (
+                    <SimilarCarsBtn
+                      key={shortid.generate()}
+                      className="btn-currMileage otherMileage currentMileageBtn"
+                      onClick={() => handleSelectMileageOption(elem.id)}
+                      elem={elem}
+                      converted={centToDollarConv(elem.product_financials[0].monthly_payment_cents)}
+                    />
+                  );
+                }
+                return (
+                  <SimilarCarsBtn
+                    key={shortid.generate()}
+                    className="btn-mileage otherMileage"
+                    onClick={() => handleSelectMileageOption(elem.id)}
+                    elem={elem}
+                    converted={centToDollarConv(elem.product_financials[0].monthly_payment_cents)}
+                  />
+                );
+              }
+              return null;
+            })
           }
-          return null;
-        })
-      }
-      {[1, 2, 3, 4, 5, 6].map(() => ( // To demonstrate extra similar cars
-        <SimilarCarsBtn
-          key={shortid.generate()}
-          className="btn-mileage otherMileage"
-          onClick={() => alert('this is a sample button')}
-          elem={{ mileage: 'SAMPLE' }}
-          converted="0"
-        />
-      ))}
+          {[1, 2, 3, 4, 5, 6].map(() => ( // To demonstrate slider for more similar cars
+            <SimilarCarsBtn
+              key={shortid.generate()}
+              className="btn-mileage otherMileage"
+              onClick={() => alert('this is a sample button')}
+              elem={{ mileage: 'DEMO' }}
+              converted="$100"
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
 
 MileageSlider.propTypes = {
-  otherData: PropTypes.objectOf(PropTypes.any),
+  vehicles: PropTypes.arrayOf(PropTypes.object),
   current: PropTypes.shape({
     body_style: PropTypes.string,
     categories: PropTypes.array,
@@ -73,10 +86,9 @@ MileageSlider.propTypes = {
     trim: PropTypes.string,
   }),
   handleSelectMileageOption: PropTypes.func.isRequired,
-  convertCentToDollar: PropTypes.func.isRequired,
 };
 MileageSlider.defaultProps = {
-  otherData: null,
+  vehicles: null,
   current: null,
 };
 

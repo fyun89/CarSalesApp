@@ -12,7 +12,18 @@ Update 2 (3/6/2019)
   - Fixed a bug where entering new page didn't reload data from the appropriate API uri.
   - Refactored page change buttons ("Next" and "Prev") to use single handler function (code-reuse) and changed PropTypes in Pagination component accordingly.
   - Removed unused handler function from BrowseContainer.
-  - TODO: more elegant alert (modal), elegant error handling for vehicles without data (redirect to previous list), more code reuse, organize readme update, fix the edge case where bootstrap carosel disappears when the user viewed a nth image of a car and then selects the nth image which the new car does not have, create margin around for "add to favorite" to have some space on left side in case for mobile use.
+  - Refactored VehicleDetailImageCarousel, DetailPage, DetailPageContainer and ProductListing to make components more readable and improve separation of concern.
+  - Refactored VehicleDetailImageCarousel to utilize code-reuse for buttons.
+  - Refactored NavBar component to utilize code-reuse and more readable.
+  - Separated components for listing spec and detail spec.
+  - Created new component to handle user actions in detail spec and reorganized each related components.
+  - TODO: 
+    - more code reuse, organize readme update
+    - fix the edge case where bootstrap carosel disappears when the user viewed a nth image of a car and then selects the nth image which the new car does not have*
+    - elegant error handling for vehicles without data (redirect to previous list)*
+    - create margin around for "add to favorite" to have some space on left side in case for mobile use
+    - allow clicking image to view the car
+    - more elegant alert (modal)
 
 Update (Nov 2018)
   - Fixed issue where componentDidMount would cause problems when loading the selection. This degraded performance of the app.

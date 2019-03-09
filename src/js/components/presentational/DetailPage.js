@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import VehiclePictures from './VehiclePictures';
-import VehicleSpec from './VehicleSpec';
+import VehicleDetailImageCarousel from './VehicleDetailImageCarousel';
+import VehicleSpecForDetailPage from './VehicleSpecForDetailPage';
 
 const DetailPage = ({
   vehicleData,
@@ -14,18 +14,12 @@ const DetailPage = ({
     {vehicleData
       ? (
         <div>
-          <div className="container">
-            <div className="row">
-              <VehiclePictures
-                data={vehicleData.image_location_list}
-                purpose="detailPage"
-              />
-            </div>
-          </div>
-          <VehicleSpec
+          <VehicleDetailImageCarousel
+            data={vehicleData.image_location_list}
+          />
+          <VehicleSpecForDetailPage
             data={vehicleData}
             otherData={otherData}
-            purpose="detail"
             handleFavorite={handleFavorite}
             handleCheckFavorite={handleCheckFavorite}
             handleSelectMileageOption={handleSelectMileageOption}

@@ -16,7 +16,6 @@ const SimilarCarsBtn = ({
     &nbsp;
     Mi
     <br />
-    $
     {converted}
   </button>
 );
