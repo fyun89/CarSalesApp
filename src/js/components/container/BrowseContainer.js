@@ -107,7 +107,7 @@ class BrowseContainer extends Component {
   }
 
   render() {
-    const { vehicleListData, selectedVehicleNumber } = this.state;
+    const { vehicleListData, selectedVehicleNumber, currentPage } = this.state;
     // if selectedVehicleNumber is > 0, indicates detail page
     return (
       <div>
@@ -134,7 +134,7 @@ class BrowseContainer extends Component {
               />
               <Pagination
                 pageData={vehicleListData}
-                currentPage={this.state.currentPage}
+                currentPage={currentPage}
                 nextPage={this.handleNextPage}
                 prevPage={this.handlePrevPage}
                 inputPage={this.handleInputPage}

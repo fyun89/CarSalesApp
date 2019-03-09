@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import VehicleSpec from './VehicleSpec';
-import VehiclePictures from './VehiclePictures';
+import VehicleSpecForProductList from './VehicleSpecForProductList';
 import Favorite from './Favorite';
-
-const purpose = 'productList';
 
 const ProductListing = ({
   data,
@@ -21,13 +18,17 @@ const ProductListing = ({
       handleFavorite={handleFavorite}
       handleCheckFavorite={handleCheckFavorite}
     />
-    <VehiclePictures purpose="browsePage" data={data} />
-    <VehicleSpec
-      className="col-sm"
+    {data ? (
+      <div className="imageParent col-12 col-md-7 col-xl-7">
+        <img className="img-fluid" src={data.chrome_image_url} alt="Vehicle" />
+      </div>
+    )
+      : null
+    }
+    <VehicleSpecForProductList
       data={data}
       handleClick={handleClick}
       index={index}
-      purpose={purpose}
     />
     <br />
   </div>
@@ -39,6 +40,13 @@ ProductListing.propTypes = {
   index: PropTypes.number,
   handleFavorite: PropTypes.func,
   handleCheckFavorite: PropTypes.func,
+};
+
+ProductListing.defaultProps = {
+  handleClick: null,
+  index: null,
+  handleFavorite: null,
+  handleCheckFavorite: null,
 };
 
 export default ProductListing;
