@@ -12,6 +12,7 @@ class BrowseContainer extends Component {
       vehicleListData: {},
       currentPage: 1,
       selectedVehicleNumber: 0,
+      selectedVehicleId: 0,
       favorited: {},
       typePage: 1,
     };
@@ -35,17 +36,18 @@ class BrowseContainer extends Component {
       });
   }
 
-  handleVehicleClick(i) {
+  handleVehicleClick(i, id) {
     const { vehicleListData, currentPage } = this.state;
+    console.log('handleclick', id)
     this.setState({
       vehicleListData,
       currentPage,
       selectedVehicleNumber: i + 1,
+      selectedVehicleId: id,
     });
   }
 
   handleBackToBrowse() {
-    console.log('backtobrowse')
     this.setState({ selectedVehicleNumber: 0 });
   }
 
@@ -108,7 +110,7 @@ class BrowseContainer extends Component {
   }
 
   render() {
-    const { vehicleListData, selectedVehicleNumber, currentPage } = this.state;
+    const { vehicleListData, selectedVehicleNumber, selectedVehicleId, currentPage } = this.state;
     // if selectedVehicleNumber is > 0, indicates detail page
     return (
       <div>
@@ -121,9 +123,11 @@ class BrowseContainer extends Component {
             <DetailPageContainer
               data={vehicleListData}
               vehicleNumber={selectedVehicleNumber - 1}
+              selectedVehicleId={selectedVehicleId}
               handleFavorite={this.handleCheckFavorite}
               handleCheckFavorite={this.handleFavorite}
               handleBackToBrowse={this.handleBackToBrowse}
+              handleVehicleClick={this.handleVehicleClick}
             />
           )
           : (// conditional rendering when vehicle is unselected (to browse list of vehicles)

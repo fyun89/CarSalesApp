@@ -27,7 +27,7 @@ const MileageSlider = ({
         Other Mileage Options:
         <div className="scrolling-wrapper">
           {
-            vehicles.map((elem) => {
+            vehicles.map((elem, i) => {
               if (elem.model === current.model
                 && elem.trim === current.trim
                 && elem.model === current.model) {
@@ -46,7 +46,7 @@ const MileageSlider = ({
                   <SimilarCarsBtn
                     key={shortid.generate()}
                     className="btn-mileage otherMileage"
-                    onClick={() => handleSelectMileageOption(elem.id)}
+                    onClick={() => handleSelectMileageOption(i, elem.id)}
                     elem={elem}
                     converted={centToDollarConv(elem.product_financials[0].monthly_payment_cents)}
                   />
@@ -55,7 +55,7 @@ const MileageSlider = ({
               return null;
             })
           }
-          {[1, 2, 3, 4, 5, 6].map(() => ( // To demonstrate slider for more similar cars
+          {[1, 2, 3, 4, 5, 6].map(() => ( // To show more similar vehicles to demonstrate slider for demo purpose
             <SimilarCarsBtn
               key={shortid.generate()}
               className="btn-mileage otherMileage"

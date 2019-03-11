@@ -9,7 +9,7 @@ const CarouselPictures = ({ data }) => (
       <img className="d-block w-100" src={data[0]} alt="First slide" />
     </div>
     {data ? data.map((elem, i) => {
-      console.log('data', elem)
+      //console.log('data', elem)
       if (i > 0) {
         return (
           <div key={shortid.generate()} className="carousel-item">

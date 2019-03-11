@@ -7,7 +7,7 @@ const VehicleSpecForProductList = ({ data, handleClick, index }) => {
     const dollars = num / 100;
     return dollars.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
   };
-
+  console.log()
   return (
     <div className="col-12 col-md-3 col-xl-3">
       <p className="vehicleName">
@@ -29,7 +29,7 @@ const VehicleSpecForProductList = ({ data, handleClick, index }) => {
         Monthly Fee:
         {centToDollarConv(data.product_financials[0].monthly_payment_cents)}
       </p>
-      <button type="button" className="btn btn-primary" onClick={() => handleClick(index)}>Check This Vehicle!</button>
+      <button type="button" className="btn btn-primary" onClick={() => handleClick(index, data.id)}>Check This Vehicle!</button>
     </div>
   );
 };
