@@ -7,6 +7,7 @@ const shortid = require('shortid');
 const MileageSlider = ({
   vehicles,
   current,
+  otherData,
   handleSelectMileageOption,
 }) => {
   const centToDollarConv = (amt) => {
@@ -14,6 +15,7 @@ const MileageSlider = ({
     const dollars = num / 100;
     return dollars.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
   };
+  console.log('otherData', otherData)
 
   return (
     <div className="mileageInfo">

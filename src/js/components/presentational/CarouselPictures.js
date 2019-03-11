@@ -8,7 +8,8 @@ const CarouselPictures = ({ data }) => (
     <div className="carousel-item active">
       <img className="d-block w-100" src={data[0]} alt="First slide" />
     </div>
-    {data.map((elem, i) => {
+    {data ? data.map((elem, i) => {
+      console.log('data', elem)
       if (i > 0) {
         return (
           <div key={shortid.generate()} className="carousel-item">
@@ -22,7 +23,8 @@ const CarouselPictures = ({ data }) => (
         );
       }
       return null;
-    })}
+    }) : null
+    }
   </div>
 );
 

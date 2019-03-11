@@ -15,7 +15,7 @@ class DetailPageContainer extends Component {
   }
 
   componentDidMount() {
-    const { data, vehicleNumber } = this.props;
+    const { data, vehicleNumber, handleBackToBrowse } = this.props;
     const { otherMileageSelected } = this.state;
     if (!otherMileageSelected) {
       axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles/${data.vehicles[vehicleNumber].id}`)
@@ -25,6 +25,7 @@ class DetailPageContainer extends Component {
         .catch((err) => {
           alert("It appears that this doesn't exist. Please try again later!");
           console.log('error at loading componentDidMount in DetailPageContainer: ', err);
+          handleBackToBrowse();
         });
     }
   }

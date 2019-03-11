@@ -45,6 +45,7 @@ class BrowseContainer extends Component {
   }
 
   handleBackToBrowse() {
+    console.log('backtobrowse')
     this.setState({ selectedVehicleNumber: 0 });
   }
 
@@ -122,6 +123,7 @@ class BrowseContainer extends Component {
               vehicleNumber={selectedVehicleNumber - 1}
               handleFavorite={this.handleCheckFavorite}
               handleCheckFavorite={this.handleFavorite}
+              handleBackToBrowse={this.handleBackToBrowse}
             />
           )
           : (// conditional rendering when vehicle is unselected (to browse list of vehicles)

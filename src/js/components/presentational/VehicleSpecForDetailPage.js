@@ -20,6 +20,7 @@ const VehicleSpecForDetailPage = ({
         <MileageSlider
           current={data}
           vehicles={otherData.vehicles}
+          otherData={otherData}
           handleSelectMileageOption={handleSelectMileageOption}
         />
         <hr />
