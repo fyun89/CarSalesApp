@@ -7,6 +7,7 @@ const VehicleSpecForProductList = ({ data, handleClick, index }) => {
     const dollars = num / 100;
     return dollars.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
   };
+
   return (
     <div className="col-12 col-md-3 col-xl-3">
       <p className="vehicleName">

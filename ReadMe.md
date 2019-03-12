@@ -1,5 +1,29 @@
 Project name: CarSalesApp
 Update 2 (3/6/2019)
+  Component Diagram:
+  
+  BrowseContainer
+  |-NavBar
+  |-DetailPageContainer
+  |  |-DetailPage
+  |  |  |-VehicleDetailImageCarousel
+  |  |  |  |-CarouselPictures
+  |  |  |  |-CarouselIndicator
+  |  |  |  |-CarouselButton
+  |  |  |-VehicleSpecForDetailPage
+  |  |  |  |-MileageSlider
+  |  |  |  | |-SimilarCarsBtn
+  |  |  |  |-DetailPagePaymentInfo
+  |  |  |  |-AssuranceNotice
+  |  |  |  |-DetailPageUserAction
+  |  |-LoadingScreen
+  |-ProductListContainer
+  |  |-ProductListing
+  |  |  |-VehicleSpecForProductList
+  |  |  |-Favorite
+  |  |-LoadingScreen
+  |-Pagination
+
   - Refactored MileageSlider component to use SimilarCarsBtn component to reduce redundant code (code-reuse).
   - Added SimilarCarsBtn component.
   - Improved the behavior for scenarios where incorrect character or number is inserted to pagination component.
@@ -19,10 +43,6 @@ Update 2 (3/6/2019)
   - Created new component to handle user actions in detail spec and reorganized each related components.
   - Fixed the issue where bootstrap carousel disappears when the user selected "Other mileage option"
   - Improved the user experience by gracefully redirecting user to product list page if the user selected invalid vehicle.
-  - TODO: 
-    - create margin around for "add to favorite" to have some space on left side in case for mobile use
-    - allow clicking image to view the car
-    - more elegant alert (modal)
 
 Update (Nov 2018)
   - Fixed issue where componentDidMount would cause problems when loading the selection. This degraded performance of the app.
