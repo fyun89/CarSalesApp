@@ -42,12 +42,12 @@ Additional code-reuse:
   - Refactored page change buttons ("Next" and "Prev") to use single handler function (code-reuse) and changed PropTypes in Pagination component accordingly.
   - Refactored NavBar component to utilize code-reuse and more readable.
   - Created new component to handle user actions in detail spec and reorganized each related components.
+  - Removed unused handler function from BrowseContainer.
 
 Bug-fixes:
   - Fixed a bug where page input default value won't update on pressing "Next" or "Prev" buttons.
   - Fixed a bug where "Prev" or "Next" button won't correctly disable itself at the beginning of the page or end of the page.
   - Fixed a bug where entering new page didn't reload data from the appropriate API URI.
-  - Removed unused handler function from BrowseContainer.
   - Fixed the issue where bootstrap carousel disappears when the user selected "Other mileage option"
 
 
