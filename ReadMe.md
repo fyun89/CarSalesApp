@@ -1,28 +1,28 @@
 Project name: CarSalesApp
-Update 2 (3/6/2019)
-  Component Diagram:
+Update 2 (3/6/2019)  
+  Component Diagram:  
   
-  BrowseContainer
-  |-NavBar
-  |-DetailPageContainer
-  |  |-DetailPage
-  |  |  |-VehicleDetailImageCarousel
-  |  |  |  |-CarouselPictures
-  |  |  |  |-CarouselIndicator
-  |  |  |  |-CarouselButton
-  |  |  |-VehicleSpecForDetailPage
-  |  |  |  |-MileageSlider
-  |  |  |  | |-SimilarCarsBtn
-  |  |  |  |-DetailPagePaymentInfo
-  |  |  |  |-AssuranceNotice
-  |  |  |  |-DetailPageUserAction
-  |  |-LoadingScreen
-  |-ProductListContainer
-  |  |-ProductListing
-  |  |  |-VehicleSpecForProductList
-  |  |  |-Favorite
-  |  |-LoadingScreen
-  |-Pagination
+  BrowseContainer  
+  |-NavBar  
+  |-DetailPageContainer  
+  |  |-DetailPage  
+  |  |  |-VehicleDetailImageCarousel  
+  |  |  |  |-CarouselPictures  
+  |  |  |  |-CarouselIndicator  
+  |  |  |  |-CarouselButton  
+  |  |  |-VehicleSpecForDetailPage  
+  |  |  |  |-MileageSlider  
+  |  |  |  | |-SimilarCarsBtn  
+  |  |  |  |-DetailPagePaymentInfo  
+  |  |  |  |-AssuranceNotice  
+  |  |  |  |-DetailPageUserAction  
+  |  |-LoadingScreen  
+  |-ProductListContainer  
+  |  |-ProductListing  
+  |  |  |-VehicleSpecForProductList  
+  |  |  |-Favorite  
+  |  |-LoadingScreen  
+  |-Pagination  
 
   - Refactored MileageSlider component to use SimilarCarsBtn component to reduce redundant code (code-reuse).
   - Added SimilarCarsBtn component.
