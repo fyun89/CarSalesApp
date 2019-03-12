@@ -1,50 +1,57 @@
-Project name: CarSalesApp
+Project name: CarSalesApp  
+
 Update 2 (3/6/2019)  
   Component Diagram:  
   
   BrowseContainer  
-  |-NavBar  
-  |-DetailPageContainer  
-  |  |-DetailPage  
-  |  |  |-VehicleDetailImageCarousel  
-  |  |  |  |-CarouselPictures  
-  |  |  |  |-CarouselIndicator  
-  |  |  |  |-CarouselButton  
-  |  |  |-VehicleSpecForDetailPage  
-  |  |  |  |-MileageSlider  
-  |  |  |  | |-SimilarCarsBtn  
-  |  |  |  |-DetailPagePaymentInfo  
-  |  |  |  |-AssuranceNotice  
-  |  |  |  |-DetailPageUserAction  
-  |  |-LoadingScreen  
-  |-ProductListContainer  
-  |  |-ProductListing  
-  |  |  |-VehicleSpecForProductList  
-  |  |  |-Favorite  
-  |  |-LoadingScreen  
-  |-Pagination  
+  |--NavBar  
+  |--DetailPageContainer  
+  |  |--DetailPage  
+  |  |  |--VehicleDetailImageCarousel  
+  |  |  |  |--CarouselPictures  
+  |  |  |  |--CarouselIndicator  
+  |  |  |  |--CarouselButton  
+  |  |  |--VehicleSpecForDetailPage  
+  |  |  |  |--MileageSlider  
+  |  |  |  | |--SimilarCarsBtn  
+  |  |  |  |--DetailPagePaymentInfo  
+  |  |  |  |--AssuranceNotice  
+  |  |  |  |--DetailPageUserAction  
+  |  |--LoadingScreen  
+  |--ProductListContainer  
+  |  |--ProductListing  
+  |  |  |--VehicleSpecForProductList  
+  |  |  |--Favorite  
+  |  |--LoadingScreen  
+  |--Pagination  
 
-  - Refactored MileageSlider component to use SimilarCarsBtn component to reduce redundant code (code-reuse).
-  - Added SimilarCarsBtn component.
+Improvements:
   - Improved the behavior for scenarios where incorrect character or number is inserted to pagination component.
     - page will not refresh to first page for the incorrect input.
     - page will not go to first page for the incorrect input.
+  - Improved the user experience by gracefully redirecting user to product list page if the user selected invalid vehicle.
   - Reduced the code for pagination's behavior for incorrect input.
+  - Refactored VehicleDetailImageCarousel, DetailPage, DetailPageContainer and ProductListing to make components more readable and improve separation of concern.
+  - Added a behavior where the page will scroll to the top of the page after page change.
+  - Separated components for listing spec and detail spec.
+
+Additional code-reuse:
+  - Added SimilarCarsBtn component.
+  - Refactored MileageSlider component to use SimilarCarsBtn component to reduce redundant code (code-reuse).
+  - Refactored VehicleDetailImageCarousel to utilize code-reuse for buttons.
+  - Refactored page change buttons ("Next" and "Prev") to use single handler function (code-reuse) and changed PropTypes in Pagination component accordingly.
+  - Refactored NavBar component to utilize code-reuse and more readable.
+  - Created new component to handle user actions in detail spec and reorganized each related components.
+
+Bug-fixes:
   - Fixed a bug where page input default value won't update on pressing "Next" or "Prev" buttons.
   - Fixed a bug where "Prev" or "Next" button won't correctly disable itself at the beginning of the page or end of the page.
-  - Added a behavior where the page will scroll to the top of the page after page change.
   - Fixed a bug where entering new page didn't reload data from the appropriate API URI.
-  - Refactored page change buttons ("Next" and "Prev") to use single handler function (code-reuse) and changed PropTypes in Pagination component accordingly.
   - Removed unused handler function from BrowseContainer.
-  - Refactored VehicleDetailImageCarousel, DetailPage, DetailPageContainer and ProductListing to make components more readable and improve separation of concern.
-  - Refactored VehicleDetailImageCarousel to utilize code-reuse for buttons.
-  - Refactored NavBar component to utilize code-reuse and more readable.
-  - Separated components for listing spec and detail spec.
-  - Created new component to handle user actions in detail spec and reorganized each related components.
   - Fixed the issue where bootstrap carousel disappears when the user selected "Other mileage option"
-  - Improved the user experience by gracefully redirecting user to product list page if the user selected invalid vehicle.
 
-Update (Nov 2018)
+
+Update (Nov 2018 - old)
   - Fixed issue where componentDidMount would cause problems when loading the selection. This degraded performance of the app.
   - Fixed the problem of losing images entirely when selecting other option while not on the first image of the carousel.
   - Partially fixed the problem where image carousel disappears when any images other than the first image is selected and "other mileage option" is clicked. However, if the currently selected image index is higher than the index of the "other mileage option" vehicle's last image, the problem persists. The partial fix was done by using the index value of the image API as the key attribute for element creation in the VehiclePicture component.
