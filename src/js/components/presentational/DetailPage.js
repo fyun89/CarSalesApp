@@ -16,6 +16,7 @@ const DetailPage = ({
         <div>
           <VehicleDetailImageCarousel
             data={vehicleData.image_location_list}
+            vehicleData={vehicleData}
           />
           <VehicleSpecForDetailPage
             data={vehicleData}

@@ -17,10 +17,9 @@ Update 2 (3/6/2019)
   - Refactored NavBar component to utilize code-reuse and more readable.
   - Separated components for listing spec and detail spec.
   - Created new component to handle user actions in detail spec and reorganized each related components.
+  - Fixed the issue where bootstrap carousel disappears when the user selected "Other mileage option"
+  - Improved the user experience by gracefully redirecting user to product list page if the user selected invalid vehicle.
   - TODO: 
-    - more code reuse, organize readme update
-    - fix the edge case where bootstrap carosel disappears when the user viewed a nth image of a car and then selects the nth image which the new car does not have*
-    - elegant error handling for vehicles without data (redirect to previous list)*
     - create margin around for "add to favorite" to have some space on left side in case for mobile use
     - allow clicking image to view the car
     - more elegant alert (modal)

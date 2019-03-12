@@ -7,7 +7,6 @@ const shortid = require('shortid');
 const MileageSlider = ({
   vehicles,
   current,
-  otherData,
   handleSelectMileageOption,
 }) => {
   const centToDollarConv = (amt) => {
@@ -15,7 +14,6 @@ const MileageSlider = ({
     const dollars = num / 100;
     return dollars.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
   };
-  console.log('otherData', otherData)
 
   return (
     <div className="mileageInfo">
@@ -55,7 +53,7 @@ const MileageSlider = ({
               return null;
             })
           }
-          {[1, 2, 3, 4, 5, 6].map(() => ( // To show more similar vehicles to demonstrate slider for demo purpose
+          {[1, 2, 3, 4, 5, 6].map(() => ( // To show more to demonstrate slider for demo purpose
             <SimilarCarsBtn
               key={shortid.generate()}
               className="btn-mileage otherMileage"

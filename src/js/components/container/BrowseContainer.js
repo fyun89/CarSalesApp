@@ -37,18 +37,17 @@ class BrowseContainer extends Component {
   }
 
   handleVehicleClick(i, id) {
-    const { vehicleListData, currentPage } = this.state;
-    console.log('handleclick', id)
     this.setState({
-      vehicleListData,
-      currentPage,
       selectedVehicleNumber: i + 1,
       selectedVehicleId: id,
     });
   }
 
   handleBackToBrowse() {
-    this.setState({ selectedVehicleNumber: 0 });
+    this.setState({
+      selectedVehicleId: 0,
+      selectedVehicleNumber: 0,
+    });
   }
 
   handleFavorite(elem) {
@@ -72,7 +71,6 @@ class BrowseContainer extends Component {
     window.scrollTo(0, 0);
     const { vehicleListData } = this.state;
     if (page > 0 && page <= vehicleListData.page_count) {
-      // this.setState({ currentPage: page });
       axios.get(`https://private-4e19e-interviewapi3.apiary-mock.com/vehicles?page={${page}}`)
         .then((res) => {
           this.setState({
@@ -110,8 +108,9 @@ class BrowseContainer extends Component {
   }
 
   render() {
-    const { vehicleListData, selectedVehicleNumber, selectedVehicleId, currentPage } = this.state;
-    // if selectedVehicleNumber is > 0, indicates detail page
+    const {
+      vehicleListData, selectedVehicleNumber, selectedVehicleId, currentPage,
+    } = this.state;
     return (
       <div>
         <NavBar
